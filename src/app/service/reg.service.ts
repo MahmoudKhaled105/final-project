@@ -7,9 +7,17 @@ import { Observable } from 'rxjs';
 export class RegService {
   constructor(private _HttpClient: HttpClient) {}
 
-  registerForm(userData:object):Observable<any>{
+  registerForm(userData: object): Observable<any> {
     return this._HttpClient.post(
-      `https://ecommerce.routemisr.com/api/v1/auth/signup`, userData
+      `https://ecommerce.routemisr.com/api/v1/auth/signup`,
+      userData
+    );
+  }
+
+  loginForm(userData: Object): Observable<any> {
+    return this._HttpClient.post(
+      `https://ecommerce.routemisr.com/api/v1/auth/signin`,
+      userData
     );
   }
 }

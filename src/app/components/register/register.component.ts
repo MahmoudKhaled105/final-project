@@ -49,7 +49,7 @@ export class RegisterComponent {
         next: (response) => {
           if (response.message === 'success') {
             //now you navigate user to login page if register is succssful and you can send any thing in url if you want by type in navigate(['', here ])
-            this._Router.navigate(['/login'])
+            this._Router.navigate(['/login']);
           }
         },
         error: (err) => {

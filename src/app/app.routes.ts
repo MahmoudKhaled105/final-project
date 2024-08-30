@@ -3,6 +3,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { LoginComponent } from './components/login/login.component';
+import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 
 export const routes: Routes = [
   {
@@ -11,9 +12,16 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'register', pathMatch: 'full' },
       { path: 'register', component: RegisterComponent },
-      {path:'login', component:LoginComponent}
+      { path: 'login', component: LoginComponent },
     ],
   },
 
-  { path: 'home', component: HomeComponent },
+  {
+    path: '',
+    component: BlankLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+    ],
+  },
 ];
