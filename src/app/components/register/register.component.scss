@@ -3,22 +3,13 @@ section{
     display: flex;
      width: 203.176vh;
     align-items: center;
-    // margin: 0;
-    // padding: 0;
     overflow-x: hidden;
 }
 
 .content{
-    // margin-left: 100px;
-    // margin-inline-start: auto;
-    // height: auto;
-    // width: 100%;
-    // margin-left: 250px;
     display: flex;
     flex-direction: column;
-    // align-items: center;
     width: 30%;
-    // margin-right: 150px;
     margin-left: 300px;
 }
 .content p,h1{
@@ -33,33 +24,19 @@ section{
 }
 .imgbanner{
     display: flex;
-    // flex-direction: column;
     align-items: center;
-    // margin-right: 150px;
-    // width: 100%;
-    // height: 100%;
-    // width: 100%;
     width: 850px;
     height: 945px;
     background-image: url(../../../assets/images/alberto-cognetti-GfkIiqcNn5k-unsplash.jpg);
     background-position:center;
-    // background-repeat: no-repeat;
     background-size: cover;
-    // opacity: 0.7;
-    // background-attachment: fixed;
 }
 .imgbanner .overlay h1,h3{
     text-align: start;
     line-height: 0.5;
-    // height: 700px;
     width: 700px;
     margin: 50px;
-    // text-align:left;
-    // align-items: start;
     color: #ffff;
-    
-    // border-radius: 30px;
-    // background-color: rgba($color: #070707, $alpha: 0.7);
 }
 .imgbanner .overlay h3{
     line-height: 1.5;
@@ -67,10 +44,3 @@ section{
 .imgbanner .overlay h1{
     font-size: 50px;
 }
-// .imgbanner img{
-//     margin: 0;
-//     padding: 0;
-//     width: 71%;
-//     object-fit: cover;
-//     // overflow-y: hidden;
-// }

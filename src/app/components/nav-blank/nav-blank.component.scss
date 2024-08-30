@@ -1,0 +1,95 @@
+section{
+    box-sizing: border-box;
+    position: relative;
+    padding: 10px 20px;
+}
+section::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.F-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+}
+.icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icon a{
+    margin-bottom: 22px;
+}
+a i{
+
+    font-size: 30px;
+}
+.icon svg{
+    margin-top: 26px;
+    cursor: pointer;
+}
+
+.filled path {
+  fill: red;
+}
+
+.F-section a{
+    text-decoration: none;
+    color: black;
+}
+form{
+    // width: 10%;
+    position: relative;
+    text-align: center;
+    margin: 20px 0px 0px 20px;
+}
+a img{
+    width: 4.25rem;
+    height: 2.77rem;
+}
+input[type="search"]{
+    width: 14rem;
+    padding: 8px 30px 7px 0px;
+    margin-left: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+    display: block;
+    font-size: 0.875rem;
+    font-weight: lighter;
+    color: black;
+    box-sizing: border-box;
+}
+input:focus{
+    outline: none;
+}
+i {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    font-size:larger;
+}
+
+.nav-link:hover{
+    border-bottom: 1px solid black;
+    margin-bottom: -1px;
+}
+.nav-link:hover::after{
+    transform: scaleX(1);
+}
+
+.nav-item{
+    margin-right: 25px;
+    font-size: 1rem;
+}
+.nav-link{
+    margin: 0px;
+    padding: 0px;
+}
