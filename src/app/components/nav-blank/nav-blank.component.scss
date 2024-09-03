@@ -36,7 +36,10 @@ a i{
     margin-top: 26px;
     cursor: pointer;
 }
-
+.icon svg:hover{
+    fill: red;
+    stroke: white;
+}
 .filled path {
   fill: red;
   stroke: white;
