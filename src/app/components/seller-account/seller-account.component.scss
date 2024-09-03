@@ -1,0 +1,120 @@
+*{
+    box-sizing: border-box;
+}
+
+
+.AccountHeader{
+
+    width: 100%;
+    height: 400px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.AccountHeader .container{
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.AccountHeader .container .account{
+
+    width: 90%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+}
+
+.AccountHeader .container .account .account_picture{
+
+    height: 100%;
+    width: 30%;
+    display: flex;
+    position: relative;
+}
+
+
+.AccountHeader .container .account .account_picture img{
+    border-radius: 50%;
+    scale: 0.7;
+    position: absolute;
+    right: 0;
+}
+
+.AccountHeader .container .account .account_Description{
+
+    width: 70%;
+    height: 90%;
+}
+
+.AccountHeader .container .account .account_Description .header .title{
+
+    display: flex;
+    align-items: center;
+}
+
+
+.AccountHeader .container .account .account_Description .header .title i{
+
+    padding: 5px 10px;
+    margin-left: 20px;
+    border: 1px solid hsl(0, 0%, 50%, 0.3);
+    border-radius: 4px;
+}
+
+.AccountHeader .container .account .account_Description .header .connection{
+    display: flex;
+}
+
+
+.AccountHeader .container .account .account_Description .header .connection button{
+    border: none;
+    scale: 0.8;
+    padding-top: 0;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.AccountHeader .container .account .account_Description .header .connection button i{
+    position: absolute;
+    top: 0;
+    margin-left: 2px;
+    opacity: 0.6;
+}
+
+.AccountHeader .container .account .account_Description .header .connection{
+    opacity: 0.8;
+}
+
+.AccountHeader .container .account .account_Description .header span{
+    margin-bottom: 15px;
+
+    display: inline-block;
+}
+
+.AccountHeader .container .account .account_Description .header .btns a{
+    text-decoration: none;
+    padding: 5px;
+    color: black;
+    background-color: hsl(0, 0%, 50%, 0.1);
+    margin: 4px 3px;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+
+.AccountHeader .container .account .account_Description .header .btns a:hover{
+    background-color: hsl(0, 0%, 50%, 0.3);
+}
+
+
+
+
+
+
