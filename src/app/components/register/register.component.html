@@ -1,70 +1,73 @@
-<!-- <div class="container">
-    <div class="row">
-        <div class=" col-md-3 imgbanner">
-            <img src="../../../assets/images/studio-reasons-Uc6Ctj_wm4w-unsplash.jpg" alt="">
-        </div>
-        <div class="col-md-9 content">
-            <h2>mahmoud</h2>
-        </div>
-    </div>
-    <h2>kholioooooooooooo
 
-    </h2>
-</div> -->
-<section class="Form ">
-
-    <!-- <div class="row no-gutters "> -->
-
+<section class="Form " >
         <div class="imgbanner  ">
-            <!-- <img src="../../../assets/images/studio-reasons-Uc6Ctj_wm4w-unsplash.jpg" alt=""> -->
              <div class="overlay">
                  <h1>Make your Fit here</h1>
                  <h3>Access 5,825,610 Collection, high-Quality Clothes you can't find anywhere else.</h3>
              </div>
         </div>
-
         <div class="content">
             <h1>Join Us</h1>
-            <p>Already have an account? <a href="#">Login</a> </p>
-            <form class="row g-4 ">
-      <div class="col-md-6">
-        <label for="fname" class="form-label">First name</label>
-        <input type="text" class="form-control" id="fname" required>
-      </div>
-      <div class="col-md-6">
-        <label for="" class="form-label">Last name</label>
-        <input type="text" class="form-control" required>
-      </div>
+            <p>Already have an account? <a routerLink="/login" href="#">Login</a> </p>
+    <form (ngSubmit)="handeleRegister()" class="row g-4" [formGroup]="registerFrom">
       <div class="col-md-12">
-        <label for="" class="form-label">Email</label>
-        <div class="input-group">
-          <input type="text" class="form-control" id="" required>
+        <label for="name" class="form-label">Name</label>
+        <input type="text" formControlName="name" class="form-control" id="name">
+        <div *ngIf="registerFrom.get('name')?.errors && registerFrom.get('name')?.touched" class="alert alert-danger">
+          <p *ngIf="registerFrom.get('name')?.getError('required')" >Name is required</p>
+          <p *ngIf="registerFrom.get('name')?.getError('minlength')">Name minlength 3</p>
+          <p *ngIf="registerFrom.get('name')?.getError('maxlength')">Name is maxlength 30</p>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <label for="email" class="form-label">Email</label>
+        
+          <input type="text" formControlName="email" class="form-control" id="email">
+          <div *ngIf="registerFrom.get('email')?.errors && registerFrom.get('email')?.touched" class="alert alert-danger">
+          <p *ngIf="registerFrom.get('email')?.getError('required')" >email is required</p>
+          <p *ngIf="registerFrom.get('email')?.getError('email')">enter a vaild email</p>
         </div>
       </div>
       <div class="col-md-12">
-        <label for="" class="form-label">UserName</label>
-        <input type="text" class="form-control" id="" required>
+        <label for="phone" class="form-label">Phone</label>
+        <input type="tel" formControlName="phone" class="form-control" id="phone" >
+        <div *ngIf="registerFrom.get('phone')?.errors && registerFrom.get('phone')?.touched" class="alert alert-danger">
+          <p *ngIf="registerFrom.get('phone')?.getError('required')">phone is required</p>
+          <p *ngIf="registerFrom.get('phone')?.getError('pattern')">enter a vaild phone</p>
+        </div>
       </div>
       <div class="col-md-12">
-        <label for="validationDefault05" class="form-label">Password</label>
-        <input type="text" class="form-control" id="validationDefault05" required>
+        <label for="password" class="form-label">Password</label>
+        <input type="text" formControlName="password" class="form-control" id="password">
+        <div *ngIf="registerFrom.get('password')?.errors && registerFrom.get('password')?.touched" class="alert alert-danger">
+          <p *ngIf="registerFrom.get('password')?.getError('required')">password is required</p>
+          <p *ngIf="registerFrom.get('password')?.getError('pattern')">enter a vaild password</p>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="rePassword" class="form-label">Re-Password</label>
+        <input type="text" formControlName="rePassword" class="form-control" id="rePassword">
+        <div *ngIf="registerFrom.get('rePassword')?.errors && registerFrom.get('rePassword')?.touched" class="alert alert-danger">
+          <p *ngIf="registerFrom.get('rePassword')?.getError('required')">rePassword is required</p>
+          <p *ngIf="registerFrom.get('rePassword')?.getError('pattern')">enter a vaild rePassword</p>
+        </div>
       </div>
       <div class="col-12">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+          <input class="form-check-input" formControlName="checkbox" type="checkbox" value="" id="" >
           <label class="form-check-label" for="invalidCheck2">
             Agree to terms and conditions
           </label>
         </div>
       </div>
       <div class="col-md-12">
-        <button class="btn btn-dark w-100" type="submit">Join</button>
+        <button [disabled]="registerFrom.invalid" class="btn btn-dark w-100" type="submit">Join</button>
       </div>
+
+      <p *ngIf="errMess" class="alert alert-danger"> {{errMess}} </p>
     </form>
-    
         </div>
- 
-<!-- </div> -->
 </section>
     
 

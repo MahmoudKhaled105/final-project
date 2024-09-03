@@ -1,1 +1,59 @@
-<p>home works!</p>
+<app-scroll-to-top></app-scroll-to-top>
+<section>
+    <div class="container ">
+        <div class="row">
+                <a href="">
+                    <div>
+                        <p>Free delivery on all orders above EGP 1999</p>
+                    </div>
+                </a>
+                <a href="">
+                    <div>
+                        <p>Free returns available online and in store</p>
+                    </div>
+                </a>
+                <a href="">
+                    <div>
+                        <p>Shop online 24/7</p>
+                    </div>
+                </a>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <owl-carousel-o [options]="offerSilder">
+                            <ng-template carouselSlide> 
+                                <img height="auto" width="100%" src="../../../assets/images/remy_loz-VfVCv53bqdw-unsplash.jpg" alt="">
+                                <div class="contText">
+                                    <h2>Get your Offers</h2> 
+                                    <h3>Relaxed Fit High shorts</h3>
+                                    <button class="btn btn-dark">Shop Now</button>
+                                </div>
+                            </ng-template>
+                            <ng-template carouselSlide> 
+                                <img height="auto" width="100%" src="../../../assets/images/walter-randlehoff-p-08ZLDt9y4-unsplash.jpg" alt=""> 
+                                <div class="contText">
+                                    <h2>Get your Offers</h2> 
+                                    <h3>Resort shirt Relaxed fit</h3>
+                                    <button class="btn btn-default">Shop Now</button>
+                                </div>
+                            </ng-template>
+                            <ng-template carouselSlide> 
+                                <img height="auto" width="100%" src="../../../assets/images/25041.jpg" alt=""> 
+                                <div class="contText">
+                                    <h2>Get your Offers</h2>
+                                    <h3>Relaxed Fit Linen-blend shorts</h3>
+                                    <button class="btn btn-dark">Shop Now</button>
+                                </div>
+                            </ng-template>
+                        </owl-carousel-o>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</section>
