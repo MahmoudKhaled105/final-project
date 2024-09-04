@@ -5,12 +5,12 @@ import { ScrollToTopComponent } from "../scroll-to-top/scroll-to-top.component";
 import { prodForYou } from '../../../Interface/ProductForYou';
 import { log } from 'console';
 import { CurrencyPipe, NgClass, NgFor } from '@angular/common';
-import { Observable } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarouselModule, ScrollToTopComponent, NgFor, CurrencyPipe, NgClass],
+  imports: [CarouselModule, ScrollToTopComponent, NgFor, CurrencyPipe, NgClass, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
