@@ -7,7 +7,6 @@ import { LoginComponent } from './components/login/login.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import { FavouritesComponent } from './components/favourites/favourites.component';
 import { CartComponent } from './components/cart/cart.component';
-
 export const routes: Routes = [
   {
     path: '', component: AuthLayoutComponent,
