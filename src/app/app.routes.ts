@@ -5,6 +5,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { SellerAccountComponent } from './components/seller-account/seller-account.component';
 import { LoginComponent } from './components/login/login.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
+import { CartComponent } from './components/cart/cart.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'seller-account', component: SellerAccountComponent },
+      { path: 'cart', component: CartComponent },
     ],
   },
 ];
