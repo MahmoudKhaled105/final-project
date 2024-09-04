@@ -1,10 +1,11 @@
+import { ForYouItemService } from './../../service/for-you-item.service';
 import { Component, OnInit } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { ScrollToTopComponent } from "../scroll-to-top/scroll-to-top.component";
-import { ForYouItemService } from '../../service/for-you-item.service';
 import { prodForYou } from '../../../Interface/ProductForYou';
 import { log } from 'console';
 import { CurrencyPipe, NgClass, NgFor } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(private _ForYouItemService: ForYouItemService) {}
 
   prodFor: prodForYou[] = [];
+  womanProd: [] =[];
   imgpath: string = 'https://image.tmdb.org/t/p/w500';
 
   ngOnInit(): void {
@@ -29,7 +31,18 @@ export class HomeComponent implements OnInit {
         console.log(err);
       },
     });
-  }
+
+    // this._ForYouItemService.getProducts().subscribe({
+    //   next:(response) =>{
+    //     this.womanProd = response.data;
+    //   }
+    // })
+  };
+
+  // womanprod():void{
+  //   this.prodFor = this.womanProd;
+  // }
+  
 
   offerSilder: OwlOptions = {
     loop: true,
@@ -75,4 +88,6 @@ export class HomeComponent implements OnInit {
     },
     nav: true,
   };
+
+
 }

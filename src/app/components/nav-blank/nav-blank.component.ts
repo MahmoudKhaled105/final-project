@@ -11,14 +11,14 @@ import { RouterLink } from '@angular/router';
 })
 export class NavBlankComponent {
 
-  isActive:boolean=false;
+  // isActive:boolean=false;
 
-  toggelIcon(){
-    if(this.isActive == false){
-      this.isActive=true;
-    }else{
-      this.isActive=false
-    }
-  }
+  // toggelIcon(){
+  //   if(this.isActive == false){
+  //     this.isActive=true;
+  //   }else{
+  //     this.isActive=false
+  //   }
+  // }
 
 }
