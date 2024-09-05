@@ -7,11 +7,12 @@ import { LoginComponent } from './components/login/login.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
 import { FavouritesComponent } from './components/favourites/favourites.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ViewdetailsComponent } from './components/viewdetails/viewdetails.component';
 export const routes: Routes = [
   {
     path: '', component: AuthLayoutComponent,
     children: [
-      { path: '', redirectTo: 'register', pathMatch: 'full' },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
     ],
@@ -25,6 +26,7 @@ export const routes: Routes = [
       { path: 'seller-account', component: SellerAccountComponent },
       { path:'favourites', component: FavouritesComponent},
       {path:'cart', component:CartComponent},
+      {path:'viewdetails', component:ViewdetailsComponent}
     ],
   },
 

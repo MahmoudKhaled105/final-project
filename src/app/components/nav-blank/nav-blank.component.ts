@@ -1,11 +1,11 @@
 import { NgClass, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-nav-blank',
   standalone: true,
-  imports: [NgIf, NgClass, RouterLink],
+  imports: [NgIf, NgClass, RouterLink, RouterLinkActive],
   templateUrl: './nav-blank.component.html',
   styleUrl: './nav-blank.component.scss'
 })

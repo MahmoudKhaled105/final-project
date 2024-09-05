@@ -60,15 +60,20 @@
     
     <section>
         <div class="container">
-            <div class="btn">
-            </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 trend">
                     <h2 class="recomend">Trending now</h2>
+                    <div class="btn-trend">
+                        <button routerLink="#" routerLinkActive="isActive" class="btn btn-danger">Women</button>
+                        <button routerLink="#" routerLinkActive="isActive" class="btn btn-danger">Men</button>
+                        <button routerLink="#" routerLinkActive="isActive" class="btn btn-danger">Baby</button>
+                        <button routerLink="#" routerLinkActive="isActive" class="btn btn-danger">Sport</button>
+                        
+                    </div>
                     <owl-carousel-o [options]="categoryOptions">
                         <ng-container *ngFor="let item of prodFor">
                             <ng-template class="ng-template " carouselSlide>
-                                <img class="img" height="400" width="200" style="margin-right: 10px;" [src]=" imgpath +item?.poster_path" [alt]="item?.title" [title]="item?.title">
+                                <img routerLink="/viewdetails" class="img" height="400" width="200" style="margin-right: 10px;" [src]=" imgpath +item?.poster_path" [alt]="item?.title" [title]="item?.title">
                                 <h3 class="h6 text-main"> {{item?.title}} </h3>
                                 <p> {{item?.vote_count|currency:"EGP"}} </p>
                             </ng-template>
@@ -88,7 +93,7 @@
                     <owl-carousel-o [options]="categoryOptions">
                         <ng-container *ngFor="let item of prodFor">
                             <ng-template class="ng-template " carouselSlide>
-                                <img class="img" height="400" width="200" style="margin-right: 10px;" [src]=" imgpath +item?.poster_path" [alt]="item?.title" [title]="item?.title">
+                                <img routerLink="/viewdetails" class="img" height="400" width="200" style="margin-right: 10px;" [src]=" imgpath +item?.poster_path" [alt]="item?.title" [title]="item?.title" >
                                 <h3 class="h6 text-main"> {{item?.title}} </h3>
                                 <p> {{item?.vote_count|currency:"EGP"}} </p>
                             </ng-template>
@@ -105,8 +110,8 @@
             <div class="row">
                 <div class="col-md-12 first">
                     <div class="colum">
-                        <div class="container-img"> 
-                            <img  src="../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg" alt="">
+                        <div class="container-img" > 
+                            <img routerLink="/viewdetails" src="../../../assets/images/ben-mcleod-O-WdR304HnM-unsplash.jpg" alt="">
                             <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -120,8 +125,8 @@
                                 <h5>jackFashion</h5>
                             </div>
                         </div>
-                        <div class="container-img">
-                        <img  src="../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg" alt="">
+                        <div class="container-img" >
+                        <img routerLink="/viewdetails" src="../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg" alt="">
                         <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -136,7 +141,7 @@
                             </div>
                         </div>
                         <div class="container-img">
-                        <img  src="../../../assets/images/karsten-winegeart-CIeE1Pg5-YU-unsplash.jpg" alt="">
+                        <img routerLink="/viewdetails" src="../../../assets/images/karsten-winegeart-CIeE1Pg5-YU-unsplash.jpg" alt="">
                         <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -151,7 +156,7 @@
                             </div>
                         </div>
                         <div class="container-img">
-                        <img  src="../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg" alt="">
+                        <img routerLink="/viewdetails" src="../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg" alt="">
                         <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -171,22 +176,7 @@
                 
                     <div class="colum">
                         <div class="container-img">
-                        <img  src="../../../assets/images/jeffery-erhunse-vjXP64dTovI-unsplash.jpg" alt="">
-                        <div class="icon">
-                                <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                                </svg>
-                                <svg width="40" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <div class="profile">
-                                <img src="../../../assets/images/andrik-langfield-AAfC-hQpyWM-unsplash.jpg" alt="">
-                                <h5>jackFashion</h5>
-                            </div>
-                        </div>
-                        <div class="container-img">
-                        <img  src="../../../assets/images/karsten-winegeart-CIeE1Pg5-YU-unsplash.jpg" alt="">
+                        <img routerLink="/viewdetails" src="../../../assets/images/jeffery-erhunse-vjXP64dTovI-unsplash.jpg" alt="">
                         <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -201,7 +191,7 @@
                             </div>
                         </div>
                         <div class="container-img">
-                        <img  src="../../../assets/images/jeffery-erhunse-vjXP64dTovI-unsplash.jpg" alt="">
+                        <img routerLink="/viewdetails" src="../../../assets/images/karsten-winegeart-CIeE1Pg5-YU-unsplash.jpg" alt="">
                         <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -216,7 +206,22 @@
                             </div>
                         </div>
                         <div class="container-img">
-                        <img  src="../../../assets/images/jeffery-erhunse-vjXP64dTovI-unsplash.jpg" alt="">
+                        <img routerLink="/viewdetails" src="../../../assets/images/jeffery-erhunse-vjXP64dTovI-unsplash.jpg" alt="">
+                        <div class="icon">
+                                <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                </svg>
+                                <svg width="40" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="profile" routerLink="/seller-account">
+                                <img src="../../../assets/images/andrik-langfield-AAfC-hQpyWM-unsplash.jpg" alt="">
+                                <h5>jackFashion</h5>
+                            </div>
+                        </div>
+                        <div class="container-img">
+                        <img routerLink="/viewdetails" src="../../../assets/images/jeffery-erhunse-vjXP64dTovI-unsplash.jpg" alt="">
                         <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -233,7 +238,7 @@
                     </div>
                         <div class="colum">
                             <div class="container-img">
-                                <img  src="../../../assets/images/karsten-winegeart-CIeE1Pg5-YU-unsplash.jpg" alt="">
+                                <img routerLink="/viewdetails" src="../../../assets/images/karsten-winegeart-CIeE1Pg5-YU-unsplash.jpg" alt="">
                                 <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -242,13 +247,28 @@
                                 <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
                                 </svg>
                             </div>
-                            <div class="profile">
+                            <div class="profile" routerLink="/seller-account">
                                 <img src="../../../assets/images/andrik-langfield-AAfC-hQpyWM-unsplash.jpg" alt="">
                                 <h5>jackFashion</h5>
                             </div>
                             </div>
                             <div class="container-img">
-                        <img  src="../../../assets/images/jeffery-erhunse-vjXP64dTovI-unsplash.jpg" alt="">
+                        <img routerLink="/viewdetails" src="../../../assets/images/jeffery-erhunse-vjXP64dTovI-unsplash.jpg" alt="">
+                        <div class="icon">
+                                <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                </svg>
+                                <svg width="40" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <div class="profile" routerLink="/seller-account">
+                                <img src="../../../assets/images/andrik-langfield-AAfC-hQpyWM-unsplash.jpg" alt="">
+                                <h5>jackFashion</h5>
+                            </div>
+                            </div>
+                            <div class="container-img" >
+                        <img routerLink="/viewdetails"  src="../../../assets/images/walter-randlehoff-p-08ZLDt9y4-unsplash.jpg" alt="">
                         <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -263,8 +283,8 @@
                             </div>
                             </div>
                             <div class="container-img">
-                        <img  src="../../../assets/images/walter-randlehoff-p-08ZLDt9y4-unsplash.jpg" alt="">
-                        <div class="icon">
+                                <img routerLink="/viewdetails" src="../../../assets/images/studio-reasons-Uc6Ctj_wm4w-unsplash.jpg" alt="">
+                                <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                                 </svg>
@@ -278,7 +298,7 @@
                             </div>
                             </div>
                             <div class="container-img">
-                                <img  src="../../../assets/images/studio-reasons-Uc6Ctj_wm4w-unsplash.jpg" alt="">
+                                <img routerLink="/viewdetails" src="../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg" alt="">
                                 <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />

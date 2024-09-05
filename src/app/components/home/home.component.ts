@@ -5,12 +5,20 @@ import { ScrollToTopComponent } from "../scroll-to-top/scroll-to-top.component";
 import { prodForYou } from '../../../Interface/ProductForYou';
 import { log } from 'console';
 import { CurrencyPipe, NgClass, NgFor } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CarouselModule, ScrollToTopComponent, NgFor, CurrencyPipe, NgClass, RouterLink],
+  imports: [
+    CarouselModule,
+    ScrollToTopComponent,
+    NgFor,
+    CurrencyPipe,
+    NgClass,
+    RouterLink,
+    RouterLinkActive,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -18,7 +26,7 @@ export class HomeComponent implements OnInit {
   constructor(private _ForYouItemService: ForYouItemService) {}
 
   prodFor: prodForYou[] = [];
-  womanProd: [] =[];
+  womanProd: [] = [];
   imgpath: string = 'https://image.tmdb.org/t/p/w500';
 
   ngOnInit(): void {
@@ -37,12 +45,11 @@ export class HomeComponent implements OnInit {
     //     this.womanProd = response.data;
     //   }
     // })
-  };
+  }
 
   // womanprod():void{
   //   this.prodFor = this.womanProd;
   // }
-  
 
   offerSilder: OwlOptions = {
     loop: true,
@@ -68,8 +75,8 @@ export class HomeComponent implements OnInit {
     autoplay: false,
     // autoplayTimeout: 2000,
     navText: [
-      '<i class="fa-solid fa-chevron-left"></i>',
       '<i class="fa-solid fa-chevron-right"></i>',
+      '<i class="fa-solid fa-chevron-left"></i>'
     ],
     margin: 20,
     responsive: {
@@ -88,6 +95,4 @@ export class HomeComponent implements OnInit {
     },
     nav: true,
   };
-
-
 }

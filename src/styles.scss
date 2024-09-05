@@ -7,12 +7,15 @@ body{
     font-family: "HM Sans Regular","HM Sans Arabic Regular","sans-serif","Arial";
     min-height: 100vh;
 }
-.active-link
-{
-    background-color: black;
-    color: white;
+
+
+.isActive{
+    color:white;
+    background-color: brown;
+    padding: 7px;
+    border: 1px solid #fff;
     border-radius: 5px;
-}
+} 
 
 .owl-carousel .owl-nav .owl-next:hover{
     font-weight: bold;
@@ -30,7 +33,7 @@ body{
     font-size: 20px;
     position: absolute;
     top: 37%;
-    right: -70px;
+    left: -70px;
     background-color: white;
     color: black;
 }
@@ -38,7 +41,7 @@ body{
     font-size: 20px;
     position: absolute;
     top: 37%;
-    left: -70px;
+    right: -70px;
     background-color: white;
     color: black;
 }
