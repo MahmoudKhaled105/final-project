@@ -8,6 +8,7 @@ import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.compon
 import { FavouritesComponent } from './components/favourites/favourites.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ViewdetailsComponent } from './components/viewdetails/viewdetails.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 export const routes: Routes = [
   {
     path: '', component: AuthLayoutComponent,
@@ -26,7 +27,8 @@ export const routes: Routes = [
       { path: 'seller-account', component: SellerAccountComponent },
       { path:'favourites', component: FavouritesComponent},
       {path:'cart', component:CartComponent},
-      {path:'viewdetails', component:ViewdetailsComponent}
+      {path:'viewdetails', component:ViewdetailsComponent},
+      {path:'checkout', component:CheckoutComponent},
     ],
   },
 
