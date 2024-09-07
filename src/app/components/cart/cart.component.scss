@@ -2,9 +2,6 @@
 .container{
     max-width: 100%;
 }
-section .container .row:first-child{
-    
-}
 section .container .row .first .head{
     margin-bottom: 12px;
 }
@@ -23,11 +20,6 @@ section .container .row .first .head p span{
     font-weight: bold;
 }
 
-///////
-section .container .row .first .bod{
-    // margin-left: 3px;
-    // margin-right: 2px;
-}
 section .container .row .first .bod .row p span{
     color: #d6001c;
     font-size: 0.875rem;

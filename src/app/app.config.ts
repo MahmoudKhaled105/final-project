@@ -6,6 +6,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { BrowserAnimationsModule, provideAnimations, provideNoopAnimations } from '@angular/platform-browser/animations';
 import { prependListener } from 'process';
+// import { ImageViewerModule } from 'ngx-image-viewer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
