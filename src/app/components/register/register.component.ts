@@ -15,7 +15,9 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   constructor(private _RegService: RegService, private _Router: Router) {}
 
-  errMess:string='';
+  errMess: string = '';
+  admin: string = '';
+  check: boolean = false;
 
   registerFrom: FormGroup = new FormGroup({
     name: new FormControl('', [
@@ -58,4 +60,18 @@ export class RegisterComponent {
       });
     }
   }
+
+  selectedRole: string = 'client'; // Default value can be 'client' or 'admin'
+
+  onRoleChange(event: any): void {
+    this.selectedRole = event.target.value;
+  }
+  // selectOwner(): void {
+  //   if (this.admin === 'admin') {
+  //     this.check = true;
+  //   } else {
+  //     this.check = true;
+  //     console.log(this.admin);
+  //   }
+  // }
 }

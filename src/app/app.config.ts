@@ -3,9 +3,10 @@ import { PreloadAllModules, provideRouter, withPreloading, withViewTransitions }
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { BrowserAnimationsModule, provideAnimations, provideNoopAnimations } from '@angular/platform-browser/animations';
 import { prependListener } from 'process';
+import { loadScreenInterceptor } from './interceptor/load-screen.interceptor';
 // import { ImageViewerModule } from 'ngx-image-viewer';
 
 export const appConfig: ApplicationConfig = {
@@ -13,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withPreloading(PreloadAllModules), withViewTransitions()),
     provideClientHydration(),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([loadScreenInterceptor])),
     provideNoopAnimations(),
     provideAnimations(),
     importProvidersFrom([BrowserAnimationsModule])

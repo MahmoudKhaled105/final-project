@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { ScrollToTopComponent } from "../scroll-to-top/scroll-to-top.component";
 import { prodForYou } from '../../../Interface/ProductForYou';
-import { log } from 'console';
 import { CurrencyPipe, NgClass, NgFor } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
@@ -33,7 +32,6 @@ export class HomeComponent implements OnInit {
     this._ForYouItemService.getItems().subscribe({
       next: (response) => {
         this.prodFor = response.results;
-        // console.log(response);
       },
       error: (err) => {
         console.log(err);
@@ -60,7 +58,6 @@ export class HomeComponent implements OnInit {
     autoplay: true,
     autoplayTimeout: 2000,
     navSpeed: 700,
-    // navText: ['', ''],
     items: 1,
     nav: false,
   };
