@@ -10,6 +10,8 @@ body{
 }
 
 
+
+
 .isActive{
     color:white;
     background-color: brown;
@@ -50,3 +52,44 @@ body{
     color: black;
     background-color: #faf9f8;
 }
+
+
+
+
+.owl-dots {
+    text-align: center; 
+    margin-top: 15px; 
+    position: relative;
+    bottom: 28px;
+    display: block;
+    justify-content: center; 
+}
+
+
+.owl-dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    bottom: 2px;
+}
+
+
+
+div.owl-dots{
+    background-color: hsl(34, 44%, 69%);
+    padding: 2px ;
+}
+
+
+
+.owl-theme .owl-nav.disabled + .owl-dots{
+    display: block;
+    margin: 0;
+}
+
+
+

@@ -11,9 +11,26 @@
         </div> -->
         <div class="row">
             <div class="col-md-3 first">
-                <div class="productimg">
-                    <img src="../../../assets/images/alberto-cognetti-GfkIiqcNn5k-unsplash.jpg" alt="">
-                </div>
+                <owl-carousel-o [options]="imgSlider">
+                    <ng-template carouselSlide>
+                        <div class="productimg">
+                            <img class="carouselSlide" src="../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg" alt="">
+                            
+                        </div>
+                    </ng-template>  
+                    <ng-template carouselSlide>
+                        <div class="productimg">
+                            <img src="../../../assets/images/alberto-cognetti-GfkIiqcNn5k-unsplash.jpg" alt="">
+
+                        </div>
+                    </ng-template>  
+                    <ng-template carouselSlide>
+                        <div class="productimg">
+                            <img src="../../../assets/images/ben-mcleod-O-WdR304HnM-unsplash.jpg" alt="">
+                            
+                        </div>
+                    </ng-template>  
+                </owl-carousel-o>
                 <div class="description">
                     <h2>Lorem, ipsum dolor.</h2>
                     <p>$ 49.00</p>

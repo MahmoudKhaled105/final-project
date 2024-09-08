@@ -36,66 +36,18 @@ section .container .content a:hover{
 
 
 
-// section .container .products{
-
-//     height: auto;
-//     height: 90vh;
-// }
-
-
-// section .container .products ul{
-//     list-style: none;
-// }
-
-
-// section .container .products ul li .productimg{
-//     height: 95%;
-// }
-
-// section .container .products ul li .productimg img{
-//     width: 100%;
-//     height: 100%;
-// }
-
-
-
-// section .container .products ul li .description{
-//     margin-top: 10px;
-// }
-
-// section .container .products ul li .description h2,
-// section .container .products ul li .description p{
-//     font-size: 15px;
-//     font-weight: bold;
-//     line-height: 0.7;
-//     padding-left: 5px;
-// }
-
-
-// section .container .products ul li .addtobasket{
-//     align-items: center;
-//     text-align: center;
-
-// }
-
-// section .container .products ul li .addtobasket button{
-//     width: 99%;
-//     padding: 20px ;
-//     border: 1px solid black;
-//     font-weight: 600;
-//     font-size: smaller;
-// }
 
 
 .productimg{
     width: 100%;
-    margin-bottom: 15px;
 }
 
 .productimg img{
     width: 100%;
     height: auto;
 }
+
+
 
 
 .description h2,p{
