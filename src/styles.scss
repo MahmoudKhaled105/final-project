@@ -57,11 +57,8 @@ body{
 
 
 .owl-dots {
-    text-align: center; 
-    margin-top: 15px; 
     position: relative;
     bottom: 28px;
-    display: block;
     justify-content: center; 
 }
 
@@ -81,14 +78,13 @@ body{
 
 div.owl-dots{
     background-color: hsl(34, 44%, 69%);
-    padding: 2px ;
+    box-sizing: border-box;
 }
 
 
 
 .owl-theme .owl-nav.disabled + .owl-dots{
     display: block;
-    margin: 0;
 }
 
 
