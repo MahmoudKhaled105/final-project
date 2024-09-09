@@ -58,7 +58,7 @@ body{
 
 .owl-dots {
     position: relative;
-    bottom: 28px;
+    bottom: 38px;
     justify-content: center; 
 }
 
@@ -82,10 +82,32 @@ div.owl-dots{
 }
 
 
-
-.owl-theme .owl-nav.disabled + .owl-dots{
-    display: block;
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background-color: red;
 }
 
 
+
+.owl-theme .owl-nav.disabled + .owl-dots {
+    display: block;
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    visibility: hidden; /* Hidden but won't affect layout */
+}
+
+.owl-theme[_ngcontent-ng-c2947750150]:hover .owl-nav.disabled + .owl-dots {
+    visibility: visible;
+    opacity: 1;  
+    transform: translateY(0);  /* Move to normal position */
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+/* Ensure that when the hover ends, it smoothly fades out */
+.owl-theme .owl-nav.disabled + .owl-dots {
+    visibility: visible;
+    opacity: 0;
+    transform: translateY(20px); /* Back to below position */
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
 
