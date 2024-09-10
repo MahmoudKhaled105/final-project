@@ -1,4 +1,23 @@
 
+section{
+    box-sizing: border-box;
+  position: relative;
+  padding: 10px 20px;
+  display: block;
+}
+section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.container{
+    width: 100%;
+}
 section .container h1{
     letter-spacing: 0.8px;
     font-size: 2.5rem;
@@ -39,13 +58,15 @@ section .container .content a:hover{
 
 
 .productimg{
-    width: 100%;
+    max-width: 100%;
     margin-bottom: 10px;
 }
 
 .productimg img{
-    width: 100%;
-    height: auto;
+    max-width: 100%;
+    // height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 
@@ -56,10 +77,6 @@ section .container .content a:hover{
     font-weight: bold;
 }
 
-
-.first{
-    height: auto;
-}
 
 .addtobasket{
     display: flex;
@@ -73,4 +90,10 @@ section .container .content a:hover{
     font-weight: bold;
     margin-bottom: 5px;
 }
+
+
+
+
+
+
 

@@ -7,14 +7,15 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
   standalone: true,
   imports: [CarouselModule, CommonModule, NgFor],
   templateUrl: './favourites.component.html',
-  styleUrls: ['./favourites.component.scss']  // Corrected this line
+  styleUrls: ['./favourites.component.scss'], // Corrected this line
 })
 export class FavouritesComponent {
-
   images: object[] = [
-  { src :"../../../assets/images/chewy-fGxiRXr2oZg-unsplash.jpg"},
-  { src :"../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg.jpg"},
-  { src :"../../../assets/images/joanna-nix-walkup-h3stFPAyn7E-unsplash.jpg"},
+    { src: '../../../assets/images/chewy-fGxiRXr2oZg-unsplash.jpg' },
+    { src: '../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg.jpg' },
+    {
+      src: '../../../assets/images/joanna-nix-walkup-h3stFPAyn7E-unsplash.jpg',
+    },
   ];
 
   imgSlider: OwlOptions = {
@@ -27,7 +28,8 @@ export class FavouritesComponent {
     autoplayTimeout: 2000,
     navSpeed: 700,
     items: 1,
-    nav: false
+    nav: false,
+    autoWidth:false,
+    margin: 10
   };
-
 }

@@ -77,7 +77,6 @@ a i {
   color: black;
 }
 form {
-  // width: 10%;
   position: relative;
   text-align: center;
   margin: 20px 0px 0px 20px;
@@ -114,9 +113,7 @@ i {
   border-bottom: 1px solid black;
   margin-bottom: -1px;
 }
-.nav-link:hover::after {
-  transform: scaleX(1);
-}
+
 
 .nav-item {
   margin-right: 25px;
