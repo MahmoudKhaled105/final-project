@@ -1,6 +1,7 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, viewChild, ViewChild } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-favourites',
@@ -9,7 +10,7 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
   templateUrl: './favourites.component.html',
   styleUrls: ['./favourites.component.scss'], // Corrected this line
 })
-export class FavouritesComponent {
+export class FavouritesComponent implements AfterViewInit {
   images: object[] = [
     { src: '../../../assets/images/chewy-fGxiRXr2oZg-unsplash.jpg' },
     { src: '../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg.jpg' },
@@ -29,7 +30,21 @@ export class FavouritesComponent {
     navSpeed: 700,
     items: 1,
     nav: false,
-    autoWidth:false,
-    margin: 10
+    autoWidth: false,
+    margin: 10,
   };
+
+  @ViewChild('targ') scrollTarget!: ElementRef;
+  constructor(private _ActivatedRoute: ActivatedRoute) {}
+
+ngAfterViewInit(): void {
+  this._ActivatedRoute.fragment.subscribe(fragment =>{
+    if(fragment){
+      const element = document.getElementById(fragment);
+      if(element){
+        element.scrollIntoView({behavior: 'instant'});
+      }
+    }
+  });
+}
 }

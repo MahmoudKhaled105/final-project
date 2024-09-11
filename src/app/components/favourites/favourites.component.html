@@ -1,16 +1,13 @@
-<section>
-    <div class="container-fluid">
-        <div>
-            <h1>MY FAVOURITES</h1>
+
+<section >
+    <div   class="container-fluid" >
+        <div  #targ id="targ">
+            <h1 >MY FAVOURITES</h1>
             <hr>
         </div>
-        <!-- <div class="content">
-            <p>Your favourites is empty.</p>
-            <a class="btn btn-dark" href="home"> Go Shopping </a>
-        </div> -->
-        <div class="row">
-            <div class="col-md-3 first">
-                <owl-carousel-o  [options]="imgSlider">
+        <div  class="row" >
+            <div class="col-md-3 first"  >
+                <owl-carousel-o class="fav"  [options]="imgSlider" >
                     <ng-template carouselSlide>
                         <div class="productimg">
                             <img  class="carouselSlide" src="../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg" alt="">

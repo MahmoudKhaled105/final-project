@@ -49,13 +49,12 @@ body{
 }
 
 
-
+////////////////////////////////////////////
 
 .owl-dots {
     position: relative;
     bottom: 40px;
 }
-
 
 .owl-dot {
     height: 12px;
@@ -67,8 +66,6 @@ body{
     
 }
 
-
-
 div.owl-dots{
     background-color: hsl(34, 44%, 69%);
     box-sizing: border-box;
@@ -79,8 +76,6 @@ div.owl-dots{
     background-color: red;
 }
 
-
-
 .owl-theme[_ngcontent-ng-c2947750150]:hover .owl-nav.disabled + .owl-dots {
     visibility: visible;
     opacity: 1;  
@@ -89,7 +84,6 @@ div.owl-dots{
     margin-top: 6px;
     margin-right: 1px;
 }
-
 
 .owl-theme .owl-nav.disabled + .owl-dots {
     visibility: visible;
@@ -101,14 +95,9 @@ div.owl-dots{
     right: 0;
     left: 0;
     margin-right: 1px;
-
 }
-
-
-
-////////////////////////
-
-.owl-carousel .owl-item {
+//////////////////
+.fav .owl-carousel .owl-item {
   flex: 1 0 100%;
   display: flex;
   align-items: center; 
@@ -116,14 +105,15 @@ div.owl-dots{
   box-sizing: border-box; 
 }
 
-.owl-carousel .owl-stage {
+.fav .owl-carousel .owl-stage {
   display: flex;
   flex-wrap: nowrap;
     max-width: 100%;
     object-fit: cover;    
 }
-.owl-carousel {
+.fav .owl-carousel {
   width: auto;
   overflow: hidden;
   position: relative;
 }
+
