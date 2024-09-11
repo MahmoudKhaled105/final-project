@@ -72,7 +72,6 @@
       </div>
 
       <div class="col-md-12">
-        <!-- <h3>are you a ShopOwner?!</h3> -->
         <label for="role">are you a Shop Owner?!</label>
         <select id="UserAdmin" name="role" (change)="onRoleChange($event)" class="form-control" required>
             <option value="user">Client</option>
@@ -85,9 +84,20 @@
           <label for="ShopName" class="form-label">Shop Name</label>
         <span style="color: red;">*</span>
           <input type="text" class="form-control" id="shopName">
-          <label for="address" class="form-label">address</label>
-        <span style="color: red;">*</span>
-          <input type="text" class="form-control" id="address">
+
+          <div class="row">
+            <div class="col-md-6">
+              <label for="city" class="form-label">city</label>
+            <span style="color: red;">*</span>
+              <input type="text" class="form-control" id="city" placeholder="ex:Ismailia" >
+            </div>
+            <div class="col-md-6">
+              <label for="Street" class="form-label">Street</label>
+            <span style="color: red;">*</span>
+              <input type="text" class="form-control" id="street" placeholder="ex:20, Elmostashfa, street.">
+            </div>
+          </div>
+
           <label for="category" class="form-label">Category</label>
         <span style="color: red;">*</span>
           <select id="category" name="category" class="form-control" required>

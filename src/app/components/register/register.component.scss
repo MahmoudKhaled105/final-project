@@ -52,3 +52,8 @@
 .imgbanner .overlay h1{
     font-size: 50px;
 }
+
+#street::placeholder,#city::placeholder{
+    color: #6e6e6e;
+    opacity: 0.6;
+}
