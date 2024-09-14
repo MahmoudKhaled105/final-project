@@ -58,8 +58,18 @@ export class HomeComponent implements OnInit {
     autoplay: true,
     autoplayTimeout: 2000,
     navSpeed: 700,
-    items: 1,
-    nav: false,
+    responsive: {
+    0: {
+      items: 1
+    },
+    600: {
+      items: 1
+    },
+    1000: {
+      items: 1
+    }
+  },
+    nav: false
   };
 
   categoryOptions: OwlOptions = {

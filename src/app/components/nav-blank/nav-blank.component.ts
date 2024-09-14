@@ -11,6 +11,7 @@ import { RouterLink, RouterLinkActive, Router } from '@angular/router';
   styleUrl: './nav-blank.component.scss',
 })
 export class NavBlankComponent {
+  
   // isActive:boolean=false;
 
   // toggelIcon(){
@@ -26,4 +27,6 @@ export class NavBlankComponent {
   navigateToSection() {
     this._Router.navigate(['/favourites'], { fragment: 'targ' });
   }
+
+ 
 }

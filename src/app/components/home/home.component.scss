@@ -1,35 +1,30 @@
-.container{
-    width: 100%;
-    text-align: center;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-    // position: relative;
-}
-.container .row{
-    display: flex;
-    justify-content: space-around;
-}
-.container .row a{
+// .container{
+//     // width: 100%;
+//     // text-align: center;
+//     // overflow: hidden;
+//     // margin-bottom: 1.5rem;
+// }
+
+.container .row .anch a{
     flex-shrink: 0;
-    position: relative;
-    box-sizing: border-box;
+    // position: relative;
+    // box-sizing: border-box;
     text-decoration: none;
     color: #000;
     outline: none;
-    padding: 32px 0 12px;
-    margin-right: 20PX;
-    width: auto !important;
 }
-.container .row div{
-    text-align: center;
-}
+// .container .row div{
+//     // text-align: center;
+// }
 
 .container .row div p{
-    margin: 0;
+    // margin: 0;
     font-size: 14px;
     color: #222222;
     line-height: 1;
 }
+//////////////////////////offer slider/////////////////////////////
+
 
 ////////////////////////slider////////////////////////////
 /// 
@@ -47,15 +42,12 @@
 }
 
 
-owl-carousel-o{
-    position: relative;
-}
 
-.contText{
-    position: absolute;
-    top: 80%;
-    left: 37%;
-}
+// .contText{
+//     // position: absolute;
+//     // top: 80%;
+//     // left: 37%;
+// }
 .contText h2{
     font-weight: 400;
     font-size: 42px;
@@ -80,18 +72,31 @@ owl-carousel-o{
     border: none;
 }
 
-.owl-prev, .owl-next {
-        width: 15px;
-        height: 100px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        display: block !important;
-        border:0px solid black;
+@media (max-width: 768px) {
+    .contText h2{
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 23px;
     }
-    .owl-prev { left: -20px; }
-    .owl-next { right: -20px; }
-    .owl-prev i, .owl-next i {transform : scale(2,5); color: #ccc;}
+    .contText h3{
+        font-size: 10px;
+        font-weight: 200;
+        line-height: 10px;
+    }
+}
+
+// .owl-prev, .owl-next {
+//         width: 15px;
+//         height: 100px;
+//         position: absolute;
+//         top: 50%;
+//         transform: translateY(-50%);
+//         display: block !important;
+//         border:0px solid black;
+//     }
+//     .owl-prev { left: -20px; }
+//     .owl-next { right: -20px; }
+//     .owl-prev i, .owl-next i {transform : scale(2,5); color: #ccc;}
 
 ////////////////////for you section/////////////////////////
 
@@ -131,6 +136,31 @@ owl-carousel-o{
     gap: 25px;
     width: 100%;
 }
+
+@media (max-width: 768px) {
+    .row .first .colum{
+        gap: 10px;
+    }
+    .row .first{
+        gap: 10px;
+    }
+    .row .first .colum .container-img{
+   &:hover{
+        .icon{
+            display: none;
+        }
+        .profile{
+            display: none;
+
+        }
+        
+        // opacity: 0.7;
+        // transition: 0.2s ease;
+   }
+}
+    
+}
+
 .row .first .colum .container-img{
     width: 100%;
     height: auto;

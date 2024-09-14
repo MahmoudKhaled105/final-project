@@ -32,20 +32,21 @@ section::after {
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
-.F-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.icon {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.icon a {
-  margin-bottom: 22px;
-}
+// .F-section {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   width: 100%;
+// }
+// .icon {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
+
+// .icon a {
+//   margin-bottom: 22px;
+// }
 a i {
   font-size: 30px;
 }
@@ -63,7 +64,7 @@ a i {
 //   stroke: white;
 // }
 
-.icon svg:active {
+svg:active {
   border-color: white;
   stroke: white;
 }
@@ -72,19 +73,19 @@ a i {
   stroke: white;
 }
 
-.F-section a {
+a {
   text-decoration: none;
   color: black;
 }
-form {
-  position: relative;
-  text-align: center;
-  margin: 20px 0px 0px 20px;
-}
+// form {
+//   position: relative;
+//   text-align: center;
+//   margin: 20px 0px 0px 20px;
+// }
 a img {
   width: 4.25rem;
-  height: 2.77rem;
-  margin-right: 45px;
+  // height: 2.77rem;
+  // margin-right: 45px;
 }
 input[type="search"] {
   width: 14rem;
@@ -102,12 +103,12 @@ input[type="search"] {
 input:focus {
   outline: none;
 }
-i {
-  position: absolute;
-  top: 10px;
-  right: 0;
-  font-size: larger;
-}
+// i {
+//   position: absolute;
+//   top: 10px;
+//   right: 0;
+//   font-size: larger;
+// }
 
 .nav-link:hover {
   border-bottom: 1px solid black;
@@ -116,7 +117,7 @@ i {
 
 
 .nav-item {
-  margin-right: 25px;
+  // margin-right: 25px;
   font-size: 1rem;
 }
 .nav-link {
@@ -125,4 +126,172 @@ i {
   color: black;
   font-weight: bold;
   font-size: 1rem;
+}
+
+.burger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  z-index: 1000;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  margin: 5px 0;
+  transition: 0.3s;
+}
+
+.burger-menu.active .bar:nth-child(1){
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-menu.active .bar:nth-child(2){
+  opacity: 0;
+}
+.burger-menu.active .bar:nth-child(3){
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Collapsible Menu */
+// .S-section {
+//   display: flex;
+//   justify-content: center;
+//   position: relative;
+// }
+
+#navbarNav {
+  display: flex;
+}
+
+// .navbar-nav {
+//   display: flex;
+// }
+
+// @media (max-width: 600px) {
+//   .login-up ul {
+//     flex-direction: column;
+//     gap: 10px;
+//     margin-right: 0;
+//   }
+
+//   .F-section {
+//     flex-direction: column;
+//     align-items: flex-start;
+//     padding: 10px;
+//   }
+
+//   form {
+//     margin: 20px 0;
+//     width: 100%;
+//     text-align: left;
+//   }
+
+//   a img {
+//     width: 3rem;
+//     height: auto;
+//     margin-right: 0;
+//   }
+
+//   input[type="search"] {
+//     width: 100%;
+//     padding: 8px;
+//   }
+
+//   .icon {
+//     flex-direction: column;
+//     align-items: flex-start;
+//   }
+
+//   .icon a,
+//   .icon svg {
+//     margin-bottom: 10px;
+//   }
+
+//   .burger-menu {
+//     display: flex;
+//   }
+
+//   #navbarNav {
+//     display: none;
+//     flex-direction: column;
+//     position: absolute;
+//     width: 100%;
+//     top: 60px;
+//     right: 0;
+//     background-color: white;
+//     border: 1px solid #ddd;
+//     padding: 10px;
+//     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//   }
+
+//   #navbarNav.show {
+//     display: flex;
+//   }
+
+//   .navbar-nav {
+//     flex-direction: column;
+//   }
+
+//   .nav-item {
+//     padding: 10px 20px;
+//     font-size: 0.9rem;
+//   }
+
+//   .nav-link {
+//     padding: 0;
+//   }
+// }
+// @media (min-width: 601px) {
+//   .burger-menu {
+//     display: none;  /* Hide burger menu on large screens */
+//   }
+
+//   #navbarNav {
+//     display: flex !important;
+//   }
+
+//   .nav-item {
+//     font-size: 1rem;
+//     margin-right: 25px;
+//   }
+
+//   .nav-link {
+//     font-size: 1rem;
+//   }
+// }
+
+
+/* Base styles for navbar */
+
+.navbar-nav {
+    display: flex;
+}
+
+/* Styles for small screens */
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction:column;
+        text-align: start;
+    }
+
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+
+    .navbar-collapse.show {
+        display: block !important;
+    }
+
+    /* Adjust padding/margins for mobile view */
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+    
 }
