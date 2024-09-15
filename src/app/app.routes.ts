@@ -9,6 +9,7 @@ import { FavouritesComponent } from './components/favourites/favourites.componen
 import { CartComponent } from './components/cart/cart.component';
 import { ViewdetailsComponent } from './components/viewdetails/viewdetails.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OnshippingComponent } from './components/onshipping/onshipping.component';
 export const routes: Routes = [
   {
     path: '', component: AuthLayoutComponent,
@@ -30,6 +31,7 @@ export const routes: Routes = [
       {path:'cart', component:CartComponent},
       {path:'viewdetails', component:ViewdetailsComponent},
       {path:'checkout', component:CheckoutComponent},
+      {path:'onshipping', component:OnshippingComponent},
     ],
   },
 
