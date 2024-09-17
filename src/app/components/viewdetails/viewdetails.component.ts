@@ -1,16 +1,42 @@
-import { NgIf } from '@angular/common';
-import { AfterViewInit, Component } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ViewDetailsService } from '../../service/view-details.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-viewdetails',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, NgFor],
   templateUrl: './viewdetails.component.html',
   styleUrl: './viewdetails.component.scss',
 })
-export class ViewdetailsComponent implements AfterViewInit {
+export class ViewdetailsComponent implements AfterViewInit, OnInit {
+  constructor(
+    private _ViewDetailsService: ViewDetailsService,
+    private _ActivatedRoute: ActivatedRoute
+  ) {}
+
+  productDetails: any = null;
+  productId: string | null = '';
+
+  ngOnInit(): void {
+    this._ActivatedRoute.paramMap.subscribe({
+      next: (params) => {
+        this.productId = params.get('id');
+      },
+    });
+    this._ViewDetailsService.viewProd(this.productId).subscribe({
+      next: (response) => {
+        // console.log(response.data);
+        this.productDetails = response.data;
+      },
+    });
+  }
+
   ngAfterViewInit(): void {
-    const imageZoom = document.getElementById( 'imageZoom' ) as HTMLElement | null;
+    const imageZoom = document.getElementById(
+      'imageZoom'
+    ) as HTMLElement | null;
     const imagZoom = document.getElementById('imagZoom') as HTMLElement | null;
     if (imageZoom) {
       imageZoom.addEventListener('mousemove', (event: MouseEvent) => {
@@ -31,7 +57,7 @@ export class ViewdetailsComponent implements AfterViewInit {
           imageZoom.style.setProperty('--display', 'none');
         }
       });
-    };
+    }
 
     if (imagZoom) {
       imagZoom.addEventListener('mousemove', (event: MouseEvent) => {
@@ -53,6 +79,5 @@ export class ViewdetailsComponent implements AfterViewInit {
         }
       });
     }
-
   }
 }

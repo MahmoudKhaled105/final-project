@@ -1,9 +1,15 @@
 import { JsonPipe, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { RegService } from '../../service/reg.service';
 import { Router } from '@angular/router';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +24,40 @@ export class RegisterComponent {
   errMess: string = '';
   admin: string = '';
   check: boolean = false;
+  selectedRole: string = 'Customer';
+
+  // registerFrom: FormGroup = new FormGroup({
+  //   name: new FormControl('', [
+  //     Validators.required,
+  //     Validators.minLength(3),
+  //     Validators.maxLength(30),
+  //   ]),
+  //   email: new FormControl('', [Validators.email, Validators.required]),
+  //   phone: new FormControl('', [
+  //     Validators.required,
+  //     Validators.pattern(/^01[0125][0-9]{8}$/),
+  //   ]),
+  //   password: new FormControl('', [
+  //     Validators.required,
+  //     Validators.pattern(
+  //       /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+  //     ),
+  //   ]),
+  //   c_Password: new FormControl('', [
+  //     Validators.required,
+  //     Validators.pattern(
+  //       /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+  //     ),
+  //   ]),
+  //   rolename: new FormControl('Customer'),
+  //   // checkbox: new FormControl('', [Validators.required]),
+  //   Shop: new FormGroup({
+  //     ShopName: new FormControl(''),
+  //     City: new FormControl(''),
+  //     Street: new FormControl(''),
+  //     ProfilePicture: new FormControl(null),
+  //   }),
+  // });
 
   registerFrom: FormGroup = new FormGroup({
     name: new FormControl('', [
@@ -25,7 +65,7 @@ export class RegisterComponent {
       Validators.minLength(3),
       Validators.maxLength(30),
     ]),
-    email: new FormControl('', [Validators.email, Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     phone: new FormControl('', [
       Validators.required,
       Validators.pattern(/^01[0125][0-9]{8}$/),
@@ -36,42 +76,85 @@ export class RegisterComponent {
         /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
       ),
     ]),
-    rePassword: new FormControl('', [
+    c_Password: new FormControl('', [
       Validators.required,
       Validators.pattern(
         /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
       ),
     ]),
-    checkbox: new FormControl('', [Validators.required]),
+    rolename: new FormControl('Customer', Validators.required),
+    Shop: new FormGroup({
+      ShopName: new FormControl(''),
+      City: new FormControl(''),
+      Street: new FormControl(''),
+      ProfilePicture: new FormControl(null),
+    }),
   });
 
   handeleRegister(): void {
+
     if (this.registerFrom.valid) {
-      this._RegService.registerForm(this.registerFrom.value).subscribe({
+      const formData = new FormData();
+      Object.keys(this.registerFrom.controls).forEach((key) => {
+        if (key === 'Shop') {
+          const shopFormGroup = this.registerFrom.get('Shop') as FormGroup;
+          Object.keys(shopFormGroup.controls).forEach((shopKey) => {
+            const value = shopFormGroup.get(shopKey)?.value;
+            if (shopKey === 'ProfilePicture' && value) {
+              console.log('Appending file:', value);
+              formData.append('Shop.ProfilePicture', value, value.name);
+            } else {
+              formData.append(`Shop.${shopKey}`, value);
+            }
+          });
+        } else {
+          formData.append(key, this.registerFrom.get(key)?.value);
+        }
+      });
+
+      console.log('FormData contents:');
+      formData.forEach((value, key) => {
+        console.log(key, value);
+      });
+
+      this._RegService.registerForm(formData).subscribe({
         next: (response) => {
-          if (response.message === 'success') {
-            //now you navigate user to login page if register is succssful and you can send any thing in url if you want by type in navigate(['', here ])
+          console.log('Registration response:', response);
+          if (
+            response.message === 'sucessed' ||
+            response.message === 'succeeded'
+          ) {
+            console.log('Registration successful');
+            // Handle successful registration
             this._Router.navigate(['/login']);
+          } else {
+            this.errMess = 'Registration failed: ' + response.message;
           }
         },
         error: (err) => {
-          this.errMess = err.error.message;
+          console.error('Registration error:', err);
+          this.errMess = `Registration failed: ${err.status} ${err.statusText}. ${err.error}`;
         },
       });
+    } else {
+      console.log('Form is invalid:', this.registerFrom.errors);
     }
   }
 
-  selectedRole: string = 'client'; // Default value can be 'client' or 'admin'
-
   onRoleChange(event: any): void {
     this.selectedRole = event.target.value;
+    if (this.selectedRole === 'Customer') {
+      this.registerFrom.get('Shop')?.reset();
+    }
   }
-  // selectOwner(): void {
-  //   if (this.admin === 'admin') {
-  //     this.check = true;
-  //   } else {
-  //     this.check = true;
-  //     console.log(this.admin);
-  //   }
-  // }
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      console.log('File selected:', file);
+      this.registerFrom.get('Shop.ProfilePicture')?.setValue(file);
+    } else {
+      console.log('No file selected');
+    }
+  }
 }

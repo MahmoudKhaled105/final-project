@@ -1,23 +1,55 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+// import * as jwtDecode from 'jwt-decode';
+import { JwtModule } from '@auth0/angular-jwt';
+import * as jwt_decode from 'jwt-decode';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { jwtDecode } from 'jwt-decode';
 @Injectable({
   providedIn: 'root',
 })
 export class RegService {
   constructor(private _HttpClient: HttpClient) {}
 
-  registerForm(userData: object): Observable<any> {
+  registerForm(userData: FormData): Observable<any> {
+    return this._HttpClient
+      .post(`https://localhost:7024/api/Account/register`, userData, {
+        responseType: 'text',
+      })
+      .pipe(
+        map((response) => {
+          // Convert text response to an object
+          return { message: response };
+        })
+      );
+  }
+
+  loginForm(userData: any): Observable<any> {
     return this._HttpClient.post(
-      `https://ecommerce.routemisr.com/api/v1/auth/signup`,
+      `https://localhost:7024/api/Account/login`,
       userData
     );
   }
 
-  loginForm(userData: Object): Observable<any> {
-    return this._HttpClient.post(
-      `https://ecommerce.routemisr.com/api/v1/auth/signin`,
-      userData
-    );
+  saveUser() {
+    const encode = localStorage.getItem('_token');
+    if (encode) {
+      var decode: any = jwtDecode(encode);
+      // console.log(
+      //   decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+      // );
+      console.log(decode['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
+      
+      // localStorage.setItem(
+      //   'userType',
+      //   decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+      // );
+      return decode[
+        'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+      ];
+    }
+    
   }
 }

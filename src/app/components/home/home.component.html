@@ -1,4 +1,4 @@
-
+    <app-nav-blank></app-nav-blank>
     <section>
         <div class="container">
             <div class="row d-flex align-items-center justify-content-center text-center p-0 ">
@@ -68,18 +68,18 @@
                 <div class="col-md-12 trend">
                     <h2 class="recomend">Trending now</h2>
                     <div class="btn-trend">
-                        <button routerLink="#" routerLinkActive="isActive" class="btn btn-danger">Women</button>
-                        <button routerLink="#" routerLinkActive="isActive" class="btn btn-danger">Men</button>
-                        <button routerLink="#" routerLinkActive="isActive" class="btn btn-danger">Baby</button>
-                        <button routerLink="#" routerLinkActive="isActive" class="btn btn-danger">Sport</button>
-                        
+                        <button routerLinkActive="isActive" (click)="getprodCatName('woman')" class="btn btn-danger">Women</button>
+                        <button routerLinkActive="isActive" (click)="getprodCatName('men')" class="btn btn-danger">Men</button>
+                        <button routerLinkActive="isActive" (click)="getprodCatName('baby')" class="btn btn-danger">Baby</button>
+                        <button routerLinkActive="isActive" (click)="getprodCatName('sport')" class="btn btn-danger">Sport</button>
+                        <button routerLinkActive="isActive" (click)="getprodCatName('')" class="btn btn-danger">All</button>
                     </div>
                     <owl-carousel-o [options]="categoryOptions">
-                        <ng-container *ngFor="let item of prodFor">
+                        <ng-container *ngFor="let item of categoryName">
                             <ng-template class="ng-template " carouselSlide>
-                                <img routerLink="/viewdetails" class="img" height="400" width="200" style="margin-right: 10px;" [src]=" imgpath +item?.poster_path" [alt]="item?.title" [title]="item?.title">
-                                <h3 class="h6 text-main"> {{item?.title}} </h3>
-                                <p> {{item?.vote_count|currency:"EGP"}} </p>
+                                <img [routerLink]="['/viewdetails', item.id]" class="img" height="400" width="200" style="margin-right: 10px;" [src]="item?.image" [alt]="item?.title" [title]="item?.title">
+                                <h3 class="h6 text-main"> {{item?.description}} </h3>
+                                <p> {{item?.price|currency:"EGP"}} </p>
                             </ng-template>
                         </ng-container>
                     </owl-carousel-o>
@@ -320,3 +320,5 @@
             </div>
         </div>
     </section>
+
+    <app-footer></app-footer>

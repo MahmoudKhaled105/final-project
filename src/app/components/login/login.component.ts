@@ -3,7 +3,7 @@ import { NavBlankComponent } from "../nav-blank/nav-blank.component";
 import { NgIf } from '@angular/common';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { RegService } from '../../service/reg.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -34,8 +34,11 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this._RegService.loginForm(this.loginForm.value).subscribe({
         next: (response) => {
-          if (response.message === 'success') {
+            console.log(response);
+          if (response.message === 'seccess') {
             //now you navigate user to login page if register is succssful and you can send any thing in url if you want by type in navigate(['', here ])
+            localStorage.setItem('_token', response.data.value.token);
+            this._RegService.saveUser();
             this._Router.navigate(['/home']);
           }
         },
