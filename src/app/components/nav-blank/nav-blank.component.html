@@ -5,8 +5,14 @@
                 <div class="login-up">
                     <ul>
                         <li><a href="register">Create An Account</a></li>
-                        <li><a href="login">Sign In</a></li>
-                        <li><a href="#">Find Stores</a></li>
+                        <li><a (click)="signout()" href="login"> {{switchlogging}} </a></li>
+                      @if(showProfile == "Shop Owner"){
+                        <li><a  href="seller-account"> My Profile</a></li>
+                      }@else if (showProfile == "Customer"){
+                            <li><a  href="home" > store </a></li>
+                      }@else {
+                            <li><a  href="home" ></a></li>
+                      }
                     </ul>
                 </div>
             </div>

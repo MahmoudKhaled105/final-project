@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
 })
 export class SellerAccountComponent {
 
+<<<<<<< HEAD
   isDropdownVisible: boolean = false;
 
 
@@ -17,4 +18,9 @@ export class SellerAccountComponent {
     this.isDropdownVisible = !this.isDropdownVisible;
   }
 
+=======
+  
+
+
+>>>>>>> 21b19d1a02d3741b38953998389c5d85e1c4495b
 }

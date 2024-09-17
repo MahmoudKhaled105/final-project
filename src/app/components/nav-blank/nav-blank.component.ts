@@ -1,7 +1,8 @@
 import { routes } from './../../app.routes';
 import { NgClass, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { RegService } from '../../service/reg.service';
 
 @Component({
   selector: 'app-nav-blank',
@@ -10,8 +11,7 @@ import { RouterLink, RouterLinkActive, Router } from '@angular/router';
   templateUrl: './nav-blank.component.html',
   styleUrl: './nav-blank.component.scss',
 })
-export class NavBlankComponent {
-  
+export class NavBlankComponent implements OnInit {
   // isActive:boolean=false;
 
   // toggelIcon(){
@@ -22,11 +22,38 @@ export class NavBlankComponent {
   //   }
   // }
 
-  constructor(private _Router: Router) {}
+  showProfile: any = '';
+  switchlogging: any = '';
+
+  ngOnInit(): void {
+    this.updateSignInOutStatus();
+    this.showProfile = this._RegService.saveUser();
+
+  }
+
+  constructor(private _Router: Router, private _RegService: RegService) {}
 
   navigateToSection() {
     this._Router.navigate(['/favourites'], { fragment: 'targ' });
   }
 
- 
+  updateSignInOutStatus(): void {
+    this.switchlogging = localStorage.getItem('_token')
+      ? 'Sign out'
+      : 'Sign in';
+  }
+
+  signout(): void {
+    if (localStorage.getItem('_token')) {
+      localStorage.removeItem('_token');
+
+      this._Router.navigate(['/login']);
+      // this.switchlogging = "Sign in";
+    } else {
+      this._Router.navigate(['/login']);
+    }
+    this.updateSignInOutStatus();
+  }
+
+  
 }
