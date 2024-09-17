@@ -7,10 +7,17 @@
             </div>
             <div class="account_Description">
                 <div class="header">
-                    <div class="title">
+                    <div class="title" [ngClass]="{ 'show-dropdown': isDropdownVisible }">
                         <h1>Samsung Memory</h1>
-                        <i class="fa-solid fa-ellipsis"></i>
+                        <i class="fa-solid fa-ellipsis" (click)="toggleDropdown()"></i>
+                    
+                        <ul class="dropdown">
+                        <li><a href="/add-product">Add Product</a></li>
+                        <li>Option 2</li>
+                        <li>Option 3</li>
+                        </ul>
                     </div>
+                    
                     <p>Memory for every endeavor – get fast storage solutions that work seamlessly with your <br> devices.</p>
                     <div class="connection">
                         <p class="connect"><i class="fa-solid fa-link"></i>  Connect with samsung</p>
