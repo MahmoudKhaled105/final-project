@@ -42,10 +42,14 @@
 
 
 .AccountHeader .container .account .account_picture img{
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     scale: 0.7;
     position: absolute;
     right: 0;
+    margin-bottom: 50px;
+    top: -35px;
 }
 
 .AccountHeader .container .account .account_Description{

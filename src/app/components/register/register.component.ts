@@ -121,8 +121,8 @@ export class RegisterComponent {
         next: (response) => {
           console.log('Registration response:', response);
           if (
-            response.message === 'sucessed' ||
-            response.message === 'succeeded'
+            response.message === 'seccess' ||
+            response.message === "{\"message\":\"sucessed\"}"
           ) {
             console.log('Registration successful');
             // Handle successful registration

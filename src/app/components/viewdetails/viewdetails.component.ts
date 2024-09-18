@@ -1,23 +1,25 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ViewDetailsService } from '../../service/view-details.service';
 import { ActivatedRoute } from '@angular/router';
+import { SafeStyle } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-viewdetails',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [NgIf, NgFor, NgStyle],
   templateUrl: './viewdetails.component.html',
   styleUrl: './viewdetails.component.scss',
 })
 export class ViewdetailsComponent implements AfterViewInit, OnInit {
+  sanitizer: any;
   constructor(
     private _ViewDetailsService: ViewDetailsService,
     private _ActivatedRoute: ActivatedRoute
   ) {}
 
   productDetails: any = null;
-  productId: string | null = '';
+  productId: any | null = '';
 
   ngOnInit(): void {
     this._ActivatedRoute.paramMap.subscribe({
@@ -27,11 +29,23 @@ export class ViewdetailsComponent implements AfterViewInit, OnInit {
     });
     this._ViewDetailsService.viewProd(this.productId).subscribe({
       next: (response) => {
-        // console.log(response.data);
-        this.productDetails = response.data;
+        console.log(response.data);
+        this.productDetails = response.data;        
       },
     });
   }
+
+  // getImageZoomStyle(): SafeStyle {
+  //   const imageUrl = this.productDetails?.image || '../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg';
+  //   const style = `--url: url(${imageUrl});
+  //                  --zoom-x: 0%;
+  //                  --zoom-y: 0%;
+  //                  --display: none;
+  //                  background-size: cover;
+  //                  background-position: center;
+  //                  background-repeat: no-repeat;`;
+  //   return this.sanitizer.bypassSecurityTrustStyle(style)
+  // };
 
   ngAfterViewInit(): void {
     const imageZoom = document.getElementById(

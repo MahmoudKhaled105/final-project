@@ -11,7 +11,9 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class RegService {
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private _HttpClient: HttpClient) {
+    // process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+  }
 
   registerForm(userData: FormData): Observable<any> {
     return this._HttpClient
@@ -37,19 +39,21 @@ export class RegService {
     const encode = localStorage.getItem('_token');
     if (encode) {
       var decode: any = jwtDecode(encode);
-      // console.log(
-      //   decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
-      // );
-      console.log(decode['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
-      
-      // localStorage.setItem(
-      //   'userType',
-      //   decode['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
-      // );
+      console.log(decode);
       return decode[
         'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
       ];
     }
-    
   }
+
+  // IdUser() {
+  //   const encode = localStorage.getItem('_token');
+  //   if (encode) {
+  //     var decode: any = jwtDecode(encode);
+  //     return decode[
+  //       'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+  //     ];
+  //   }
+  // }
+
 }

@@ -1,8 +1,8 @@
-<section>
+<section *ngIf="productDetails">
     <div class="container-fluid">
-        <div class="row" id="details">
-            <div class="col-md-4 first" *ngIf="productDetails">
-                <div id="imageZoom" style="--url: url(../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg);
+        <div class="row" id="details" >
+            <!-- <div class="col-md-4 first" >
+                <div id="imagZoom" style="--url: url(../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg);
                 --zoom-x: 0%; --zoom-y: 0%;
                 --display:none; 
                 background-size: cover;
@@ -10,6 +10,18 @@
                 background-repeat: no-repeat;
                 ">
                     <img  src="../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg" alt="">
+            </div> -->
+            <div class="col-md-4 first">
+                    <div id="imageZoom" [ngStyle]="{
+                'background-image': 'url(' + (productDetails.image || '../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg') + ')',
+                'background-size': 'cover',
+                'background-position': 'center',
+                'background-repeat': 'no-repeat',
+                '--zoom-x': '0%',
+                '--zoom-y': '0%',
+                '--display': 'none'
+                }">
+                <img [src]="productDetails.image" [alt]="productDetails.name || 'Product image'">
                 </div>
             </div>
             <div class="col-md-4 second">
@@ -24,13 +36,14 @@
                 </div>
             </div>
             <div class="col-md-4 third">
-                <div class="profile" routerLink="/seller-account">
-                    <img src="../../../assets/images/andrik-langfield-AAfC-hQpyWM-unsplash.jpg" alt="">
-                    <h5>jackFashion</h5>
+                <div class="profile" routerLink="/seller-account" *ngIf="productDetails">
+                    <img [src]="productDetails?.shopImage" alt="">
+                    <h5>{{productDetails.shopName}}</h5>
                 </div>
                 <div class="head">
-                    <h5>Regular Fit Modal-blend resort shirt</h5>
-                    <p>EGP 2499.00</p>
+                    <h5>{{productDetails.productName}}</h5>
+                    <p>price EGP {{productDetails.price}}</p>
+                    <p>quantity: {{productDetails.quantity}}</p>
                     <span>Inclusive of VAT</span>
                 </div>
                 <button id="cart" class="w-100 btn btn-dark d-flex justify-content-center gap-2">

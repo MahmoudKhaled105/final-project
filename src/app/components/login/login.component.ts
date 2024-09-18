@@ -34,11 +34,14 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this._RegService.loginForm(this.loginForm.value).subscribe({
         next: (response) => {
-            console.log(response);
+            // console.log(response);
+            // console.log(response.data.value.token);
           if (response.message === 'seccess') {
             //now you navigate user to login page if register is succssful and you can send any thing in url if you want by type in navigate(['', here ])
             localStorage.setItem('_token', response.data.value.token);
+            // console.log(response);
             this._RegService.saveUser();
+            // this._RegService.IdUser();
             this._Router.navigate(['/home']);
           }
         },

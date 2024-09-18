@@ -6,6 +6,8 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { BrowserAnimationsModule, provideAnimations, provideNoopAnimations } from '@angular/platform-browser/animations';
 import { prependListener } from 'process';
+// import { loadScreenInterceptor } from './interceptor/load-screen.interceptor';
+import { httpReqInterceptor } from './interceptor/http-req.interceptor';
 import { loadScreenInterceptor } from './interceptor/load-screen.interceptor';
 // import { ImageViewerModule } from 'ngx-image-viewer';
 
@@ -14,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withPreloading(PreloadAllModules), withViewTransitions()),
     provideClientHydration(),
-    provideHttpClient(withFetch(), withInterceptors([loadScreenInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([ loadScreenInterceptor, httpReqInterceptor])),
     provideNoopAnimations(),
     provideAnimations(),
     importProvidersFrom([BrowserAnimationsModule])

@@ -5,11 +5,14 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { ScrollToTopComponent } from "../scroll-to-top/scroll-to-top.component";
 import { prodForYou } from '../../../Interface/ProductForYou';
 import { CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Route, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { GetproductService } from '../../service/getproduct.service';
 import { response } from 'express';
+
 import { NavBlankComponent } from '../nav-blank/nav-blank.component';
 import { FooterComponent } from "../footer/footer.component";
+import { AuthService } from '../../service/auth.service';
+import { ShopOwnerDataService } from '../../service/shop-owner-data.service';
 
 @Component({
   selector: 'app-home',
@@ -33,7 +36,10 @@ export class HomeComponent implements OnInit {
   constructor(
     private _ForYouItemService: ForYouItemService,
     private _GetproductService: GetproductService,
-    private _RegService: RegService
+    private _RegService: RegService,
+    private _AuthService: AuthService,
+    private _Router: Router,
+    private _ShopOwnerDataService: ShopOwnerDataService
   ) {}
 
   categoryName: any[] = [];
@@ -42,15 +48,17 @@ export class HomeComponent implements OnInit {
   womanProd: [] = [];
   imgpath: string = 'https://image.tmdb.org/t/p/w500';
 
+  isCustomer: boolean = false;
+
   ngOnInit(): void {
-    this._ForYouItemService.getItems().subscribe({
-      next: (response) => {
-        this.prodFor = response.results;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+    // this._ForYouItemService.getItems().subscribe({
+    //   next: (response) => {
+    //     this.prodFor = response.results;
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   },
+    // });
 
     this._GetproductService.getProduct('').subscribe({
       next: (response) => {
@@ -63,7 +71,20 @@ export class HomeComponent implements OnInit {
     });
 
     // this._RegService.saveUser();
+
+    // this.checkUserRole();
   }
+
+  // checkUserRole() {
+  //   this.isCustomer = this._AuthService.isCustomer(); // Implement this method in your AuthService
+  // }
+
+  // navigateToSellerProfile(shopId: string) {
+  //   if (this.isCustomer) {
+  //     this.router.navigate(['seller-account', shopId]);
+  //   }
+  // }
+
   getprodCatName(categName: string): void {
     this._GetproductService.getProduct(categName).subscribe({
       next: (response) => {
@@ -72,6 +93,31 @@ export class HomeComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error fetching products:', err);
+      },
+    });
+  }
+
+  getShop(id: any): void {
+  console.log('Fetching shop with ID:', id);
+    this._ShopOwnerDataService.getShopById(id).subscribe({
+      next: (response) => {
+        console.log(response);
+        if(response){
+          console.log(response);
+          
+          this._Router.navigate(['seller-account', id]);
+        }
+      },
+      error: (error) => {
+        console.error('Error fetching shop:', error);
+        if (error.error instanceof ErrorEvent) {
+          console.error('Client-side error:', error.error.message);
+        } else {
+          console.error(
+            `Server-side error: ${error.status} ${error.statusText}`
+          );
+          console.error('Error body:', error.error);
+        }
       },
     });
   }

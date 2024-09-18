@@ -6,9 +6,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ViewDetailsService {
-  constructor(private _HttpClient: HttpClient) {}
+  constructor(private _HttpClient: HttpClient) {
+    // process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+  }
 
-  viewProd(id:string|null):Observable<any>{
+  viewProd(id:number|null):Observable<any>{
     return this._HttpClient.get(`https://localhost:7024/api/Product/${id}`);
   }
+
+
+
+  
 }
