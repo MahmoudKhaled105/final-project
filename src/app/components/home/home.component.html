@@ -78,7 +78,7 @@
                         <ng-container *ngFor="let item of categoryName">
                             <ng-template class="ng-template " carouselSlide>
                                 <img [routerLink]="['/viewdetails', item.id]" class="img" height="400" width="200" style="margin-right: 10px;" [src]="item?.image" [alt]="item?.title" [title]="item?.title">
-                                <h3 class="h6 text-main"> {{item?.description}} </h3>
+                                <h3 class="h6 text-main"> {{item?.shopName}} </h3>
                                 <p> {{item?.price|currency:"EGP"}} </p>
                             </ng-template>
                         </ng-container>
@@ -94,10 +94,11 @@
                 <!-- <div class="col-md-1"></div> -->
                 <div class="col-md-12">
                     <h2 class="recomend">Recommended For You</h2>
+                        <!-- <button routerLinkActive="isActive" (click)="getprodCatName('')" class="btn btn-danger">All</button> -->
                     <owl-carousel-o [options]="categoryOptions">
-                        <ng-container *ngFor="let item of prodFor">
+                        <ng-container *ngFor="let item of categoryName">
                             <ng-template class="ng-template " carouselSlide>
-                                <img routerLink="/viewdetails" class="img" height="400" width="200" style="margin-right: 10px;" [src]=" imgpath +item?.poster_path" [alt]="item?.title" [title]="item?.title" >
+                                <img [routerLink]="['/viewdetails', item.id]" class="img" height="400" width="200" style="margin-right: 10px;" [src]=" item?.image" [alt]="item?.title" [title]="item?.title" >
                                 <h3 class="h6 text-main"> {{item?.title}} </h3>
                                 <p> {{item?.vote_count|currency:"EGP"}} </p>
                             </ng-template>
@@ -117,12 +118,12 @@
                         <div class="container-img" *ngFor="let item of categoryName"> 
                             <img routerLink="/viewdetails" [src]="item?.image" alt="">
                             <div class="icon">
-                                <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg  width="40" height="30" viewBox="0 0 24 24" (click)="addToFavourites(item.id)" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                                 </svg>
-                                <svg width="40" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
-                                </svg>
+                                    <svg  width="40" height="30" viewBox="0 0 24 24" (click)="addProdCart(item.id, UId)" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
+                                    </svg>
                             </div>
                             <!-- <div class="profile" routerLink="/seller-account/{{item.shopId}}"> -->
                             <div class="profile" (click)="getShop(item.shopId)">
@@ -130,55 +131,46 @@
                                 <h5>{{item.shopName}}</h5>
                             </div>
                         </div>
-                        <div class="container-img" >
-                        <img routerLink="/viewdetails" src="../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg" alt="">
-                        <div class="icon">
-                                <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    </div>
+                    <div class="colum">
+                        <div class="container-img" *ngFor="let item of categoryName"> 
+                            <img routerLink="/viewdetails" [src]="item?.image" alt="">
+                            <div class="icon">
+                                <svg  width="40" height="30" viewBox="0 0 24 24" (click)="addToFavourites(item.id)" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                                 </svg>
-                                <svg width="40" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
-                                </svg>
+                                    <svg  width="40" height="30" viewBox="0 0 24 24" (click)="addProdCart(item.id, UId)" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
+                                    </svg>
                             </div>
-                            <div class="profile" routerLink="/seller-account">
-                                <img src="../../../assets/images/andrik-langfield-AAfC-hQpyWM-unsplash.jpg" alt="">
-                                <h5>jackFashion</h5>
+                            <!-- <div class="profile" routerLink="/seller-account/{{item.shopId}}"> -->
+                            <div class="profile" (click)="getShop(item.shopId)">
+                                <img [src]="item.shopImage" alt="">
+                                <h5>{{item.shopName}}</h5>
                             </div>
                         </div>
-                        <div class="container-img">
-                        <img routerLink="/viewdetails" src="../../../assets/images/karsten-winegeart-CIeE1Pg5-YU-unsplash.jpg" alt="">
-                        <div class="icon">
-                                <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    </div>
+                    <div class="colum">
+                        <div class="container-img" *ngFor="let item of categoryName"> 
+                            <img routerLink="/viewdetails" [src]="item?.image" alt="">
+                            <div class="icon">
+                                <svg  width="40" height="30" viewBox="0 0 24 24" (click)="addToFavourites(item.id)" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                                 </svg>
-                                <svg width="40" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
-                                </svg>
+                                    <svg  width="40" height="30" viewBox="0 0 24 24" (click)="addProdCart(item.id, UId)" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
+                                    </svg>
                             </div>
-                            <div class="profile" routerLink="/seller-account">
-                                <img src="../../../assets/images/andrik-langfield-AAfC-hQpyWM-unsplash.jpg" alt="">
-                                <h5>jackFashion</h5>
-                            </div>
-                        </div>
-                        <div class="container-img">
-                        <img routerLink="/viewdetails" src="../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg" alt="">
-                        <div class="icon">
-                                <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                                </svg>
-                                <svg width="40" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <div class="profile" routerLink="/seller-account">
-                                <img src="../../../assets/images/andrik-langfield-AAfC-hQpyWM-unsplash.jpg" alt="">
-                                <h5>jackFashion</h5>
+                            <!-- <div class="profile" routerLink="/seller-account/{{item.shopId}}"> -->
+                            <div class="profile" (click)="getShop(item.shopId)">
+                                <img [src]="item.shopImage" alt="">
+                                <h5>{{item.shopName}}</h5>
                             </div>
                         </div>
                     </div>
                     
                 
-                    <div class="colum">
+                    <!-- <div class="colum">
                         <div class="container-img">
                         <img routerLink="/viewdetails" src="../../../assets/images/jeffery-erhunse-vjXP64dTovI-unsplash.jpg" alt="">
                         <div class="icon">
@@ -257,8 +249,8 @@
                             </div>
                             </div>
                             <div class="container-img">
-                        <img routerLink="/viewdetails" src="../../../assets/images/jeffery-erhunse-vjXP64dTovI-unsplash.jpg" alt="">
-                        <div class="icon">
+                                <img routerLink="/viewdetails" src="../../../assets/images/jeffery-erhunse-vjXP64dTovI-unsplash.jpg" alt="">
+                                <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                                 </svg>
@@ -272,8 +264,8 @@
                             </div>
                             </div>
                             <div class="container-img" >
-                        <img routerLink="/viewdetails"  src="../../../assets/images/walter-randlehoff-p-08ZLDt9y4-unsplash.jpg" alt="">
-                        <div class="icon">
+                                <img routerLink="/viewdetails"  src="../../../assets/images/walter-randlehoff-p-08ZLDt9y4-unsplash.jpg" alt="">
+                                <div class="icon">
                                 <svg  width="40" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                                 </svg>
@@ -316,7 +308,7 @@
                                 <h5>jackFashion</h5>
                             </div>
                             </div>
-                        </div>
+                        </div> -->
                 </div>
             </div>
         </div>

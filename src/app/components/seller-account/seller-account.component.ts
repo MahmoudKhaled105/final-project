@@ -55,6 +55,8 @@ export class SellerAccountComponent implements OnInit {
           console.log(response);
 
           this.shopOwner = response;
+        window.location.reload();
+          
         },
       });
   }

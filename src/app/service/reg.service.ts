@@ -46,14 +46,17 @@ export class RegService {
     }
   }
 
-  // IdUser() {
-  //   const encode = localStorage.getItem('_token');
-  //   if (encode) {
-  //     var decode: any = jwtDecode(encode);
-  //     return decode[
-  //       'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
-  //     ];
-  //   }
-  // }
+  IdUser() {
+    const encode = localStorage.getItem('_token');
+    if (encode) {
+      var decode: any = jwtDecode(encode);
+      var userid =
+        decode[
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
+        ];
+        console.log(userid);
+      return userid;
+    }
+  }
 
 }

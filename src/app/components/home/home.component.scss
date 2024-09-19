@@ -128,11 +128,13 @@
 }
 .row .first{
     display: flex;
+    flex-wrap: nowrap;
     gap: 25px;
 }
 .row .first .colum{
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 25px;
     width: 100%;
 }

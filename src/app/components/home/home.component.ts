@@ -2,7 +2,7 @@ import { RegService } from './../../service/reg.service';
 import { ForYouItemService } from './../../service/for-you-item.service';
 import { Component, OnInit } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-import { ScrollToTopComponent } from "../scroll-to-top/scroll-to-top.component";
+import { ScrollToTopComponent } from '../scroll-to-top/scroll-to-top.component';
 import { prodForYou } from '../../../Interface/ProductForYou';
 import { CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { Route, Router, RouterLink, RouterLinkActive } from '@angular/router';
@@ -10,9 +10,11 @@ import { GetproductService } from '../../service/getproduct.service';
 import { response } from 'express';
 
 import { NavBlankComponent } from '../nav-blank/nav-blank.component';
-import { FooterComponent } from "../footer/footer.component";
+import { FooterComponent } from '../footer/footer.component';
 import { AuthService } from '../../service/auth.service';
 import { ShopOwnerDataService } from '../../service/shop-owner-data.service';
+import { AddToCartService } from '../../service/add-to-cart.service';
+import { AddFavouritService } from '../../service/add-favourit.service';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +41,9 @@ export class HomeComponent implements OnInit {
     private _RegService: RegService,
     private _AuthService: AuthService,
     private _Router: Router,
-    private _ShopOwnerDataService: ShopOwnerDataService
+    private _ShopOwnerDataService: ShopOwnerDataService,
+    private _AddToCartService: AddToCartService,
+    private _AddFavouritService: AddFavouritService
   ) {}
 
   categoryName: any[] = [];
@@ -49,27 +53,19 @@ export class HomeComponent implements OnInit {
   imgpath: string = 'https://image.tmdb.org/t/p/w500';
 
   isCustomer: boolean = false;
-
+  UId: string = '';
   ngOnInit(): void {
-    // this._ForYouItemService.getItems().subscribe({
-    //   next: (response) => {
-    //     this.prodFor = response.results;
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //   },
-    // });
-
     this._GetproductService.getProduct('').subscribe({
       next: (response) => {
         this.categoryName = response.data;
-        console.log('Products for category:', '', response);
+        // console.log('Products for category:', '', response);
       },
       error: (err) => {
         console.error('Error fetching products:', err);
       },
     });
 
+    this.UId = this._RegService.IdUser();
     // this._RegService.saveUser();
 
     // this.checkUserRole();
@@ -97,14 +93,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
+
+
+
   getShop(id: any): void {
-  console.log('Fetching shop with ID:', id);
+    console.log('Fetching shop with ID:', id);
     this._ShopOwnerDataService.getShopById(id).subscribe({
       next: (response) => {
         console.log(response);
-        if(response){
+        if (response) {
           console.log(response);
-          
+
           this._Router.navigate(['seller-account', id]);
         }
       },
@@ -125,6 +124,27 @@ export class HomeComponent implements OnInit {
   // womanprod():void{
   //   this.prodFor = this.womanProd;
   // }
+
+  addProdCart(userId: any, id: any): void {
+    this._AddToCartService.addToCart(id, userId).subscribe({
+      next: (response) => {
+        console.log(response);
+        console.log(userId, id);
+      },
+    });
+  }
+
+  addToFavourites(id: any): void {
+    const item = {
+      prodId: id,
+    };
+    this._AddFavouritService.addToFav(item).subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+    });
+    console.log(id);
+  }
 
   offerSilder: OwlOptions = {
     loop: true,

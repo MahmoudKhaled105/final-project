@@ -1,7 +1,11 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component, ElementRef, AfterViewInit, viewChild, ViewChild } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, viewChild, ViewChild, OnInit, Renderer2 } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { ActivatedRoute } from '@angular/router';
+import { AddFavouritService } from '../../service/add-favourit.service';
+import { response } from 'express';
+import { RegService } from '../../service/reg.service';
+import { AddToCartService } from '../../service/add-to-cart.service';
 
 @Component({
   selector: 'app-favourites',
@@ -10,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './favourites.component.html',
   styleUrls: ['./favourites.component.scss'], // Corrected this line
 })
-export class FavouritesComponent implements AfterViewInit {
+export class FavouritesComponent implements AfterViewInit, OnInit {
   images: object[] = [
     { src: '../../../assets/images/chewy-fGxiRXr2oZg-unsplash.jpg' },
     { src: '../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg.jpg' },
@@ -35,16 +39,57 @@ export class FavouritesComponent implements AfterViewInit {
   };
 
   @ViewChild('targ') scrollTarget!: ElementRef;
-  constructor(private _ActivatedRoute: ActivatedRoute) {}
+  // private _AddToCartService: any;
+  constructor(
+    private _ActivatedRoute: ActivatedRoute,
+    private _AddFavouritService: AddFavouritService,
+    private _Renderer2: Renderer2,
+    private _RegService: RegService,
+    private _AddToCartService: AddToCartService
+  ) {}
+  UId: string = '';
 
-ngAfterViewInit(): void {
-  this._ActivatedRoute.fragment.subscribe(fragment =>{
-    if(fragment){
-      const element = document.getElementById(fragment);
-      if(element){
-        element.scrollIntoView({behavior: 'instant'});
+  ngAfterViewInit(): void {
+    this._ActivatedRoute.fragment.subscribe((fragment) => {
+      if (fragment) {
+        const element = document.getElementById(fragment);
+        if (element) {
+          element.scrollIntoView({ behavior: 'instant' });
+        }
       }
-    }
-  });
+    });
+  }
+
+  favUsr: any;
+  ngOnInit(): void {
+    this._AddFavouritService.getFav().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.favUsr = response;
+      },
+    });
+
+    this.UId = this._RegService.IdUser();
+  }
+
+  removFav(id: any, btnremove: HTMLButtonElement): void {
+    this._AddFavouritService.removeFav(id).subscribe({
+      next: (response) => {
+        console.log(response);
+        this._Renderer2.removeAttribute(btnremove, 'disabled');
+        window.location.reload();
+      },
+    });
+  }
+
+  addProdCart(userId: any, id: any): void {
+    this._AddToCartService.addToCart(id, userId).subscribe({
+      next: (response) => {
+        console.log(response);
+        console.log(userId, id);
+      },
+    });
+  }
 }
-}
+
+

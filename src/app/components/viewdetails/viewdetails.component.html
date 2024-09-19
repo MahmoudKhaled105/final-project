@@ -1,5 +1,5 @@
 <section *ngIf="productDetails">
-    <div class="container-fluid">
+    <div class="container-fluid" style="height: 1000px;">
         <div class="row" id="details" >
             <!-- <div class="col-md-4 first" >
                 <div id="imagZoom" style="--url: url(../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg);
@@ -13,7 +13,7 @@
             </div> -->
             <div class="col-md-4 first">
                     <div id="imageZoom" [ngStyle]="{
-                'background-image': 'url(' + (productDetails.image || '../../../assets/images/corinne-kutz-j_9drN8w6gw-unsplash.jpg') + ')',
+                'background-image': 'url(' + productDetails.image + ')',
                 'background-size': 'cover',
                 'background-position': 'center',
                 'background-repeat': 'no-repeat',

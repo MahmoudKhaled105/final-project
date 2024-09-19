@@ -7,7 +7,7 @@ export const loadScreenInterceptor: HttpInterceptorFn = (req, next) => {
   const busyService = inject(ReloadService);
   busyService.busy();
   return next(req).pipe(
-    delay(3000),
+    delay(200),
     finalize(() => busyService.idle())
   );
 };
