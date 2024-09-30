@@ -39,10 +39,21 @@ export class RegService {
     const encode = localStorage.getItem('_token');
     if (encode) {
       var decode: any = jwtDecode(encode);
-      console.log(decode);
       return decode[
         'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
       ];
+    }
+  }
+
+  UserName(){
+    const encode = localStorage.getItem('_token');
+    if (encode) {
+      var decode: any = jwtDecode(encode);
+      var userName =
+        decode[
+          'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
+        ];
+      return userName;
     }
   }
 
@@ -54,7 +65,6 @@ export class RegService {
         decode[
           'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
         ];
-        console.log(userid);
       return userid;
     }
   }

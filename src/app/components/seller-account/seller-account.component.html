@@ -41,7 +41,7 @@
     </div>
     <section>
         <div class="container">
-            <div class="row" *ngIf="!isLoading">
+            <div class="row " *ngIf="!isLoading">
                 <div [routerLink]="['/viewdetails', item.id]"  class="col-md-4" *ngFor="let item of ownerData.product">
                 <img [src]="item.pictureUrl" alt="Product Name" style="width: 100%; height: auto;">
                 <h5 class="mt-2"> Price:  $ {{item.price}} </h5>
@@ -68,8 +68,6 @@
                             @if(ownerData){
                                 <ul class="dropdown">
                                 <li><a href="/add-product">Add Product</a></li>
-                                <li>Option 2</li>
-                                <li>Option 3</li>
                                 </ul>
                             }
                         </div>
@@ -94,7 +92,7 @@
     <section>
     <hr>
         <div class="container" *ngIf="shopOwner">
-            <div class="row" >
+            <div class="row d-flex align-items-center" >
                 <div [routerLink]="['/viewdetails', item.id]"  class="col-md-4" *ngFor="let item of shopOwner.products">
                 <img [src]="item.pictureUrl" alt="Product Name" style="width: 100%; height: auto;">
                 <h5 class="mt-2"> Price: $ {{item.price}} </h5>

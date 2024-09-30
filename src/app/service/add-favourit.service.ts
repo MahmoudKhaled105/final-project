@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AddFavouritService {
   constructor(private _HttpClient: HttpClient) {}
+
+  isFav: BehaviorSubject<string> = new BehaviorSubject("");
 
   MyToken: any = {
     token: localStorage.getItem('_token'),

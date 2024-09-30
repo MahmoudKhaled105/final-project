@@ -14,6 +14,10 @@ export class GetproductService {
     token: localStorage.getItem('_token'),
   };
 
+  getAllProduct(): Observable<any>{
+    return this._HttpClient.get(`https://localhost:7024/api/Product`);
+  }
+
   getProduct(catName: string): Observable<any> {
     return this._HttpClient.get(
       `https://localhost:7024/api/Product?categoryName=${catName}`

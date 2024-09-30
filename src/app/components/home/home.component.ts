@@ -15,6 +15,7 @@ import { AuthService } from '../../service/auth.service';
 import { ShopOwnerDataService } from '../../service/shop-owner-data.service';
 import { AddToCartService } from '../../service/add-to-cart.service';
 import { AddFavouritService } from '../../service/add-favourit.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -43,10 +44,13 @@ export class HomeComponent implements OnInit {
     private _Router: Router,
     private _ShopOwnerDataService: ShopOwnerDataService,
     private _AddToCartService: AddToCartService,
-    private _AddFavouritService: AddFavouritService
+    private _AddFavouritService: AddFavouritService,
+    private _ToastrService: ToastrService
   ) {}
 
   categoryName: any[] = [];
+
+  allProd: any;
 
   prodFor: prodForYou[] = [];
   womanProd: [] = [];
@@ -62,6 +66,15 @@ export class HomeComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error fetching products:', err);
+      },
+    });
+
+    this._GetproductService.getAllProduct().subscribe({
+      next: (response) => {
+        this.allProd = response.data;
+      },
+      error: (err) => {
+        console.log(err);
       },
     });
 
@@ -85,16 +98,13 @@ export class HomeComponent implements OnInit {
     this._GetproductService.getProduct(categName).subscribe({
       next: (response) => {
         this.categoryName = response.data;
-        console.log('Products for category:', categName, response);
+        // console.log('Products for category:', categName, response);
       },
       error: (err) => {
         console.error('Error fetching products:', err);
       },
     });
   }
-
-
-
 
   getShop(id: any): void {
     console.log('Fetching shop with ID:', id);
@@ -130,6 +140,14 @@ export class HomeComponent implements OnInit {
       next: (response) => {
         console.log(response);
         console.log(userId, id);
+        this._AddToCartService.cartCout.next(response.items.length);
+        this._ToastrService.success("Product added successfully to you cart")
+        
+      },
+      error: (err) => {
+        if (err) {
+          this._ToastrService.error("this Product already added to your cart")
+        }
       },
     });
   }
@@ -141,9 +159,17 @@ export class HomeComponent implements OnInit {
     this._AddFavouritService.addToFav(item).subscribe({
       next: (response) => {
         console.log(response);
+        this._AddFavouritService.isFav.next(response.message);        
+        this._ToastrService.success('Product added successfully to you favourites');
+      },
+      error: (err) => {
+        if (err) {
+                  this._ToastrService.error(
+                    'already added to you favourites'
+                  );
+        }
       },
     });
-    console.log(id);
   }
 
   offerSilder: OwlOptions = {

@@ -4,12 +4,18 @@
             <div class="col-md-12">
                 <div class="login-up">
                     <ul>
-                        <li><a href="register">Create An Account</a></li>
+                        @if(showProfile == "Shop Owner"){
+                            <li><a> WELCOME,{{userName| uppercase}}! </a></li>
+                        }@else if (showProfile == "Customer") {
+                            <li><a>WELCOME,{{userName| uppercase}}! </a></li>
+                        }@else {
+                            <li><a href="register">Create account</a></li>
+                        }
                         <li><a (click)="signout()" href="login"> {{switchlogging}} </a></li>
                       @if(showProfile == "Shop Owner"){
                         <li><a  href="seller-account"> My Profile</a></li>
                       }@else if (showProfile == "Customer"){
-                            <li><a  href="home" > store </a></li>
+                            <li><a  href="home#store" > store </a></li>
                       }@else {
                             <li><a  href="home" ></a></li>
                       }
@@ -26,13 +32,26 @@
                 </form>
             </div>
             <div class="col-md-8 col-6 d-flex align-items-center justify-content-center">
-                <a class="navbar-brand" routerLink="home"> <img src="../../../assets/images/site-logo.svg" alt=""> </a>
+                <a class="navbar-brand" routerLink="home"> <img src="../../../assets/images/logo-no-background.svg" alt=""> </a>
             </div>
             <div class="col-md-2 col-12 mb-3 mt-2 d-flex align-items-center justify-content-center gap-3">
-                    <svg style="cursor: pointer; outline:none;" routerLink="#" (click)="navigateToSection()"  width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"  />
+                @if(userFav){
+                    <svg style="cursor: pointer; outline:none;" routerLink="#" (click)="navigateToSection()"  width="30" height="30" viewBox="0 0 24 24" fill="red" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke="white" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                     </svg>
-                    <a routerLink="/cart"  ><i style="color: black; font-size: 30px;" class="fa-solid fa-bag-shopping" ></i></a>
+                }@else{
+                    <svg style="cursor: pointer; outline:none;" routerLink="#" (click)="navigateToSection()"  width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke="black" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                }
+                    <a routerLink="/cart">
+                    <i style="color: black; font-size: 30px; position: relative;" class="fa-solid fa-bag-shopping" ></i>
+                    @if(carNum === 0){
+                        <span hidden class="badge bg-danger position-absolute top-35 end-25"></span>
+                    }@else{
+                        <span class="badge bg-danger position-absolute top-35 end-25"> {{carNum}} </span>
+                    }
+                    </a>
             </div>
         </div>
 

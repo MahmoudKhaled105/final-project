@@ -125,11 +125,14 @@
     width: 80%;
     margin: auto;
     padding: 40px 0;
+    // height: auto;
 }
 .row .first{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 25px;
+    margin-bottom: 20px;
+    // align-items: center;
 }
 .row .first .colum{
     display: flex;
@@ -173,12 +176,18 @@
    &:hover{
         .icon{
             visibility: visible;
+            z-index: 10;
         }
         .profile{
             visibility: visible;
+            // background-color: rgba($color: #e4e0e0, $alpha: 0.8);
+            // border-radius: 7%;
+            // padding: 10px;
+            width: auto;
+            z-index: 10;
         }
         
-        opacity: 0.7;
+        opacity: 0.8;
         transition: 0.2s ease;
    }
 }
@@ -220,25 +229,29 @@
 }
 
 .row .first .colum .container-img .profile img{
-    border-radius: 25px;
+    border-radius: 50%;
     width: 32px;
     height: 32px;
+    object-fit: cover;
+    opacity: 1;
+    z-index: 100;
+    
 }
 .row .first .colum .container-img .profile:hover{
     img{
-        width: 34px;
-        height: 34px;
-        border: 1px solid black;
+        opacity: 1;
+        object-fit: cover;
     }
     h5{
-    font-weight:900;
-    text-decoration:underline;
+    font-weight:bolder;
+    opacity: 1;
     }
 }
 
 .row .first .colum .container-img .profile h5{
-    font-weight: 700;
+    font-weight: bold;
     font-size: 1rem;
     margin-top: 5px;
-    color: black;
+    opacity: 0.7;
+    color: white;
 }
