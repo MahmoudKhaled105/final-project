@@ -5,6 +5,7 @@ import { ShopOwnerDataService } from '../../service/shop-owner-data.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { response } from 'express';
+import { GetproductService } from '../../service/getproduct.service';
 
 @Component({
   selector: 'app-seller-account',
@@ -23,11 +24,12 @@ export class SellerAccountComponent implements OnInit {
   constructor(
     private _ShopOwnerDataService: ShopOwnerDataService,
     private _ActivatedRoute: ActivatedRoute,
-    private _HttpClient: HttpClient
+    private _HttpClient: HttpClient,
+    private _GetproductService: GetproductService
   ) {}
 
   ownerData: any;
-  shopId:string='';
+  shopId: string = '';
   ngOnInit(): void {
     this._ShopOwnerDataService.getShopOwner().subscribe({
       next: (response) => {
@@ -41,8 +43,7 @@ export class SellerAccountComponent implements OnInit {
 
     this._ActivatedRoute.params.subscribe((params) => {
       this.shopId = params['id'];
-      console.log(this.shopId);
-      
+
       this.fetchShopOwnerData(this.shopId);
     });
   }
@@ -53,11 +54,17 @@ export class SellerAccountComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log(response);
-
           this.shopOwner = response;
-          
         },
       });
+  }
+
+  deleteProduct(id: any) {
+    this._GetproductService.RemoveProduct(id).subscribe({
+      next:(response)=>{
+        window.location.reload();
+      }
+    })
   }
 
   toggleDropdown() {

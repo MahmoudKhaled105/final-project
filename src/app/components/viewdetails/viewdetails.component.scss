@@ -1,17 +1,19 @@
 
+
+//////////////////////////
+
 .first #imageZoom{
     // width: 200px;
-    height: 800px;
+    // height: 800px;
     position: relative;
     overflow: hidden;
 }
 
 .first #imageZoom img{
     width:  100%;
-    height: 100%;
+    // height: 100%;
     object-fit: cover;
     object-position: 0 0;
-
 }
 
 .first #imageZoom::after{
@@ -23,6 +25,7 @@
     background-image: var(--url) ;
     background-size: 200%;
     background-position: var(--zoom-x)  var(--zoom-y);
+    transition: all 0.3s ease-out;
     position: absolute;
     left: 0;
     top: 0;
@@ -31,7 +34,7 @@
 
 .second #imagZoom{
     // width: 200px;
-    height: 800px;
+    // height: 800px;
     position: relative;
     overflow: hidden;
 }
@@ -54,6 +57,7 @@
     background-size: 200%;
     background-position: var(--zoom-x)  var(--zoom-y);
     position: absolute;
+    transition: all 0.3s ease-out;
     left: 0;
     top: 0;
     pointer-events: none;

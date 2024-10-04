@@ -72,6 +72,8 @@ export class HomeComponent implements OnInit {
     this._GetproductService.getAllProduct().subscribe({
       next: (response) => {
         this.allProd = response.data;
+        console.log(this.allProd);
+        
       },
       error: (err) => {
         console.log(err);
@@ -142,7 +144,6 @@ export class HomeComponent implements OnInit {
         console.log(userId, id);
         this._AddToCartService.cartCout.next(response.items.length);
         this._ToastrService.success("Product added successfully to you cart")
-        
       },
       error: (err) => {
         if (err) {

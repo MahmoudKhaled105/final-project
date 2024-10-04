@@ -30,4 +30,8 @@ export class GetproductService {
        prodData 
     );
   }
+
+  RemoveProduct(id: any):Observable<any> {
+    return this._HttpClient.delete(`https://localhost:7024/api/Product/${id}`);
+  }
 }

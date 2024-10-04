@@ -173,3 +173,22 @@
     text-decoration: none;
     color: black;
 }
+
+.btnDelete{
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: black;
+    font-weight: bold;
+    justify-content: center;
+    gap: 5px;
+}
+.btnDelete:hover{
+    color: white;
+    &{
+        svg path{
+            fill: black;
+        }
+    }
+}
