@@ -5,6 +5,7 @@ import {
   FormControl,
   ReactiveFormsModule,
   Validators,
+  FormControlOptions,
 } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { RegService } from '../../service/reg.service';
@@ -76,12 +77,8 @@ export class RegisterComponent {
         /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
       ),
     ]),
-    c_Password: new FormControl('', [
-      Validators.required,
-      Validators.pattern(
-        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
-      ),
-    ]),
+    c_Password: new FormControl(''),
+
     rolename: new FormControl('Customer', Validators.required),
     Shop: new FormGroup({
       ShopName: new FormControl(''),
@@ -89,7 +86,19 @@ export class RegisterComponent {
       Street: new FormControl(''),
       ProfilePicture: new FormControl(null),
     }),
-  });
+  }, {validators:[this.confirmPassword]} as FormControlOptions);
+
+  //custom Validation --> parameter
+  confirmPassword(group:FormGroup):void {
+    const password = group.get('password');
+    const repassword = group.get('c_Password');
+    if(repassword?.value === ''){  // required input
+      repassword.setErrors({requried:true})
+    }
+    else if( password?.value !== repassword?.value ){
+        repassword?.setErrors( {mismatch:true} )
+    }
+  }
 
   handeleRegister(): void {
 

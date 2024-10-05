@@ -49,11 +49,13 @@ export class NavBlankComponent implements OnInit {
     this._AddFavouritService.isFav.subscribe({
       next:(data)=>{
         this.userFav=data;
+        // console.log(this.userFav);
+        
       }
     });
     this._AddFavouritService.getFav().subscribe({
       next:(response)=>{
-        this._AddFavouritService.isFav.next(response.message);
+        this._AddFavouritService.isFav.next(response);
       }
     })
 

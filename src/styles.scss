@@ -18,6 +18,10 @@ body{
     padding: 7px;
     border: 1px solid #fff;
     border-radius: 5px;
+}
+.active-link{
+  border-bottom: 1px solid black;
+  margin-bottom: -1px;
 } 
 
 .owl-carousel .owl-nav .owl-next:hover{

@@ -64,7 +64,6 @@ export class FavouritesComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
     this._AddFavouritService.getFav().subscribe({
       next: (response) => {
-        console.log(response);
         this.favUsr = response;
       },
     });
@@ -75,7 +74,7 @@ export class FavouritesComponent implements AfterViewInit, OnInit {
   removFav(id: any, btnremove: HTMLButtonElement): void {
     this._AddFavouritService.removeFav(id).subscribe({
       next: (response) => {
-        console.log(response);
+        // console.log(response);
         this._Renderer2.removeAttribute(btnremove, 'disabled');
         window.location.reload();
       },

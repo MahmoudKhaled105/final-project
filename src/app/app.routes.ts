@@ -13,6 +13,10 @@ import { OnshippingComponent } from './components/onshipping/onshipping.componen
 import { AddressComponent } from './components/address/address.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { authGuard } from './auth.guard';
+import { WomanComponent } from './components/woman/woman.component';
+import { MenComponent } from './components/men/men.component';
+import { BabyComponent } from './components/baby/baby.component';
+import { SportComponent } from './components/sport/sport.component';
 
 export const routes: Routes = [
   {
@@ -62,7 +66,13 @@ export const routes: Routes = [
         component: OnshippingComponent,
       },
       { path: 'address', component: AddressComponent },
+
       { path: 'add-product', component: AddProductComponent },
+
+      { path: 'woman', canActivate: [authGuard], component: WomanComponent },
+      { path: 'men', canActivate: [authGuard], component: MenComponent },
+      { path: 'baby', canActivate: [authGuard], component: BabyComponent },
+      { path: 'sport', canActivate: [authGuard], component: SportComponent },
     ],
   },
 ];

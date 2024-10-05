@@ -1,0 +1,43 @@
+
+<section class="mb-4"> 
+    <div class="container w-50">
+        <div class="row">
+            <h2 class="fw-bold text-center">Men</h2>
+            <hr>
+            <div class="col-md-12 col-12">
+                <owl-carousel-o [options]="offerSilder">
+                    <ng-template carouselSlide> 
+                        <img height="auto" width="100%" src="../../../assets/images/joanna-nix-walkup-h3stFPAyn7E-unsplash.jpg" alt="">
+                        <div style="color: #fff;" class="contText d-flex flex-column align-items-center text-center top-50 start-50 translate-middle position-absolute ">
+                            <h2>Get your Offers</h2> 
+                            <h3>Relaxed Fit High shorts</h3>
+                            <button class="btn btn-light"> <a style="text-decoration: none; color: #000;" href="home#store">Shop Now</a> </button>
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mb-4">
+    <div class="container w-50" >            
+            <hr>
+        <div class="row">
+            <div class="col-md-4 first mb-4"  *ngFor="let item of categoryName">
+                    <div class="productimg">
+                        <img [src]="item.image" alt="" width="100%" height="auto">
+                    </div>
+                <div class="description">
+                    <h2> {{item.productName}} </h2>
+                    <p> {{item.price | currency}} </p>
+                </div>
+                <div class="addtobasket d-flex flex-column mb-3">
+                    <button (click)="addProdCart(item.id, UId)" class="btn btn-dark">ADD TO CART </button>
+                    <button (click)="addToFavourites(item.id)" class="btn btn-danger">ADD TO FAVOURITES </button>
+                </div>
+            </div>
+        </div>
+        
+</div>
+</section>

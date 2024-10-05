@@ -42,6 +42,7 @@ export class AddProductComponent {
       next: (response) => {
         if (response.message === 'success') {
           console.log(response);
+          window.location.reload();
         }
       },
     });

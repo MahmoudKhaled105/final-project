@@ -104,7 +104,7 @@
               <label for="password" class="form-label">Password</label>
               <span style="color: red">*</span>
               <input
-                type="text"
+                type="password"
                 formControlName="password"
                 class="form-control"
                 id="password"
@@ -128,7 +128,7 @@
               <label for="c_Password" class="form-label">Re-Password</label>
               <span style="color: red">*</span>
               <input
-                type="text"
+                type="password"
                 formControlName="c_Password"
                 class="form-control"
                 id="c_Password"
@@ -140,11 +140,11 @@
                 "
                 class="alert alert-danger"
               >
-                <p *ngIf="registerFrom.get('c_Password')?.getError('required')">
-                  c_Password is required
+                <p *ngIf="registerFrom.get('c_Password')?.getError('requried')">
+                  RE_Password is required
                 </p>
-                <p *ngIf="registerFrom.get('c_Password')?.getError('pattern')">
-                  enter a vaild Re-Password
+                <p *ngIf="registerFrom.get('c_Password')?.getError('mismatch')">
+                  Password confirmation is incorrect
                 </p>
               </div>
             </div>

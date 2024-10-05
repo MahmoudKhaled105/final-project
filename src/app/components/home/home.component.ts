@@ -112,11 +112,11 @@ export class HomeComponent implements OnInit {
     console.log('Fetching shop with ID:', id);
     this._ShopOwnerDataService.getShopById(id).subscribe({
       next: (response) => {
-        console.log(response);
+        // console.log(response);
         if (response) {
-          console.log(response);
-
+          // console.log(response);
           this._Router.navigate(['seller-account', id]);
+          
         }
       },
       error: (error) => {
